@@ -8,11 +8,13 @@
       @forelse($upcoming_agendas as $monthly => $agendas)
       <div class="card shadow-sm mb-3">
          <div class="card-header">
-            <h3 class="card-title">{{ $monthly }}
-               <small class="badge badge-secondary">{{ count($agendas) }}</small>
-            </h3>
-            <div class="card-tools"> <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                  <i class="fas fa-minus"></i> </button> </div>
+            <h3 class="card-title">{{ $monthly }}</h3>
+            <div class="card-tools">
+               <small class="badge badge-primary">{{ count($agendas) }}</small>
+               <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+               </button>
+            </div>
          </div>
          <div class="card-body p-0">
             <ul class="products-list product-list-in-card p-2">
@@ -36,7 +38,7 @@
                      </span>
                      @if($agenda->workunit_id)
                      <span class="product-description text-info">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-user"></i>
                         Terbatas
                      </span>
                      @endif

@@ -5931,7 +5931,7 @@ a.badge-dark.focus {
 	display: block;
 	padding: 0.75rem 1.25rem;
 	background-color: #ffffff;
-	border: 1px solid rgba(0, 0, 0, 0.125);
+	border: 1px solid rgba(0, 0, 0, 0.075);
 }
 
 .list-group-item:first-child {
@@ -19949,7 +19949,7 @@ textarea.form-control.is-warning {
 }
 
 .card .nav.flex-column > li {
-	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.075);
 	margin: 0;
 }
 
@@ -19963,11 +19963,11 @@ textarea.form-control.is-warning {
 }
 
 .card .border-right {
-	border-right: 1px solid rgba(0, 0, 0, 0.125);
+	border-right: 1px solid rgba(0, 0, 0, 0.075);
 }
 
 .card .border-left {
-	border-left: 1px solid rgba(0, 0, 0, 0.125);
+	border-left: 1px solid rgba(0, 0, 0, 0.075);
 }
 
 .card.card-tabs:not(.card-outline) > .card-header {
@@ -20073,7 +20073,7 @@ html.maximized-card {
 
 .card-header {
 	background-color: transparent;
-	/* border-bottom: 1px solid rgba(0, 0, 0, 0.125); */
+	/* border-bottom: 1px solid rgba(0, 0, 0, 0.075); */
 	padding: 0.75rem 1.25rem;
 	position: relative;
 	border-top-left-radius: 1rem;
@@ -21616,7 +21616,7 @@ html.maximized-card {
 }
 
 .timeline > div > .timeline-item > .timeline-header {
-	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.075);
 	color: #495057;
 	font-size: 16px;
 	line-height: 1.1;
@@ -21728,7 +21728,7 @@ html.maximized-card {
 
 .product-list-in-card > .item {
 	border-radius: 0;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.075);
 }
 
 .product-list-in-card > .item:last-of-type {
@@ -22360,11 +22360,11 @@ html.maximized-card {
 }
 
 .mailbox-controls.with-border {
-	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.075);
 }
 
 .mailbox-read-info {
-	border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.075);
 	padding: 10px;
 }
 
@@ -22698,7 +22698,7 @@ html.maximized-card {
 
 .invoice {
 	background: #ffffff;
-	border: 1px solid rgba(0, 0, 0, 0.125);
+	border: 1px solid rgba(0, 0, 0, 0.075);
 	position: relative;
 }
 
@@ -31802,7 +31802,7 @@ select.form-control-sm
 
 .attachment-block {
 	background: #f8f9fa;
-	border: 1px solid rgba(0, 0, 0, 0.125);
+	border: 1px solid rgba(0, 0, 0, 0.075);
 	margin-bottom: 10px;
 	padding: 5px;
 }
@@ -36629,3 +36629,21 @@ a.text-muted:hover {
 	font-weight: 600;
 }
 /*# sourceMappingURL=adminlte.css.map */
+.opacity-0 {
+	opacity: 0;
+}
+.opacity-1 {
+	opacity: .2;
+}
+.opacity-2 {
+	opacity: .4;
+}
+.opacity-3 {
+	opacity: .6;
+}
+.opacity-4 {
+	opacity: .8;
+}
+.opacity-5 {
+	opacity: 1;
+}

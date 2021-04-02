@@ -61,7 +61,7 @@
             </div>
         </div>
         <div class="form-group mb-4">
-            <button type="submit" class="btn btn-primary btn-block">Ubah Password</button>
+            <button type="submit" class="btn btn-primary btn-block font-weight-bold">Ubah Password</button>
         </div>
     </form>
 

@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/upcoming-agenda', 'UpcomingAgendaController@get_api');
+Route::post('/agenda/{slug}', 'AgendaController@get_api_detail');

@@ -121,8 +121,8 @@
                   </a>
                </li>
             </ul>
-            <a href="" class="btn btn-primary"><b><i class="far fa-eye"></i> Daftar Hadir</b></a>
-            <a href="" class="btn btn-success float-right"><b><i class="far fa-bookmark"></i> Presensi</b></a>
+            <a href="" class="btn btn-primary font-weight-bold"><i class="far fa-eye"></i> Daftar Hadir</a>
+            <a href="" class="btn btn-success font-weight-bold float-right"><i class="far fa-bookmark"></i> Presensi</a>
          </div>
       </div>
    </div>

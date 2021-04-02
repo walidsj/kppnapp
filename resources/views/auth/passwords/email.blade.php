@@ -35,7 +35,7 @@
         </div>
 
         <div class="form-group mb-4">
-            <button type="submit" class="btn btn-primary btn-block">Kirim Link Reset</button>
+            <button type="submit" class="btn btn-primary btn-block font-weight-bold">Kirim Link Reset</button>
         </div>
     </form>
 

@@ -150,7 +150,7 @@
         </div>
 
         <div class="form-group mb-4">
-            <button type="submit" class="btn btn-primary btn-block">Register</button>
+            <button type="submit" class="btn btn-primary btn-block font-weight-bold">Register</button>
         </div>
     </form>
 

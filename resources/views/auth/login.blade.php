@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="form-group mb-4">
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <button type="submit" class="btn btn-primary btn-block font-weight-bold">Login</button>
         </div>
     </form>
     <div class="row">
