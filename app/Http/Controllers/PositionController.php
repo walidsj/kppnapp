@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Position;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PositionController extends Controller
 {
     //
     public function position_index()
     {
-        $position_model = new Position();
-        $positions = $position_model->get();
-        return view('pages.admin.master_position', compact('positions'));
+        return view('pages.admin.master_position');
     }
 
     public function position_get(Request $request)
@@ -60,7 +59,7 @@ class PositionController extends Controller
     public function position_destroy(Request $request)
     {
         $this->validate($request, [
-            'id' => 'required',
+            'id' => 'required|not_in:' . Auth::user()->position->id,
         ]);
 
         $position = Position::find(intval($request->id));

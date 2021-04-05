@@ -29,10 +29,10 @@
                             </div>
                             <form id="storePosition" method="POST" action="{{ route('master_position.store') }}">
                                 @csrf
+                                <input name="id" type="hidden" id="id" value="">
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <label for="name">Nama Jabatan<span class="text-warning">*</span></label>
-                                        <input name="id" type="hidden" id="id" value="">
                                         <input name="name" type="text" id="name" class="form-control"
                                             placeholder="Nama Jabatan" autocomplete="off" required>
                                         <span id="name-error" class="invalid-feedback" role="alert">
@@ -152,7 +152,7 @@
                             }
                         },
                         error: function (response) {
-                            Swal.fire('Gagal Hapus', response.responseJSON.errors, 'error');
+                            Swal.fire('Gagal Hapus', JSON.stringify(response.responseJSON.errors), 'error');
                         }
                     });
                 }
@@ -180,7 +180,7 @@
                             $('#dataTrashPosition').DataTable().ajax.reload();
                         },
                         error: function (response) {
-                            Swal.fire('Gagal Restore', response.responseJSON.errors, 'error');
+                            Swal.fire('Gagal Restore', JSON.stringify(response.responseJSON.errors), 'error');
                         }
                     });
                 }
@@ -207,7 +207,7 @@
                             $('#dataTrashPosition').DataTable().ajax.reload();
                         },
                         error: function (response) {
-                            Swal.fire('Gagal Hapus', response.responseJSON.errors, 'error');
+                            Swal.fire('Gagal Hapus', JSON.stringify(response.responseJSON.errors), 'error');
                         }
                     });
                 }
