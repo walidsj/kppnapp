@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Auth;
 class WorkunitController extends Controller
 {
     //
-    public function workunit_index()
+    public function index()
     {
         return view('pages.admin.master_workunit');
     }
 
-    public function workunit_get(Request $request)
+    public function get(Request $request)
     {
         $this->validate($request, [
             'id' => 'required',
@@ -27,7 +27,7 @@ class WorkunitController extends Controller
         return response()->json();
     }
 
-    public function workunit_store(Request $request)
+    public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|min:5|max:255',
@@ -45,7 +45,7 @@ class WorkunitController extends Controller
         return response()->json();
     }
 
-    public function workunit_update(Request $request)
+    public function update(Request $request)
     {
         $this->validate($request, [
             'id' => 'required',
@@ -60,7 +60,7 @@ class WorkunitController extends Controller
         return response()->json();
     }
 
-    public function workunit_destroy(Request $request)
+    public function destroy(Request $request)
     {
         $this->validate($request, [
             'id' => 'required|not_in:' . Auth::user()->workunit->id,
@@ -73,7 +73,7 @@ class WorkunitController extends Controller
         return response()->json();
     }
 
-    public function workunit_restore(Request $request)
+    public function restore(Request $request)
     {
         $this->validate($request, [
             'id' => 'required',
@@ -86,7 +86,7 @@ class WorkunitController extends Controller
         return response()->json();
     }
 
-    public function workunit_destroy_permanent(Request $request)
+    public function destroy_permanent(Request $request)
     {
         $this->validate($request, [
             'id' => 'required',
@@ -104,7 +104,7 @@ class WorkunitController extends Controller
     # Pusing Banget Ga Tuh!
     # Semangat
     # -----------------------------------------------------------------
-    public function datatable_workunit(Request $request)
+    public function datatable(Request $request)
     {
         $search = $request->search['value'];
         $limit = $request->length;
@@ -130,7 +130,7 @@ class WorkunitController extends Controller
         return response()->json($callback, 200)->header('Content-Type', 'application/json');
     }
 
-    public function datatable_trash_workunit(Request $request)
+    public function datatable_trash(Request $request)
     {
         $search = $request->search['value'];
         $limit = $request->length;

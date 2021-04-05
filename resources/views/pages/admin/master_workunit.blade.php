@@ -20,77 +20,6 @@
                     data-toggle="modal" data-target="#trashWorkunitModal">
                     <i class="fas fa-trash"></i> Trash
                 </button>
-                <!-- Modal -->
-                <div class="modal fade" id="storeWorkunitModal" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="storeWorkunitModalLabel">Tambah Satker</h5>
-                            </div>
-                            <form id="storeWorkunit" method="POST" action="{{ route('master_workunit.store') }}">
-                                @csrf
-                                <input name="id" type="hidden" id="id" value="">
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="name">Nama Satker<span class="text-warning">*</span></label>
-                                        <input name="name" type="text" id="name" class="form-control"
-                                            placeholder="Nama Satker" autocomplete="off" required>
-                                        <span id="name-error" class="invalid-feedback" role="alert">
-                                        </span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="code">Kode Satker<span class="text-warning">*</span></label>
-                                        <input name="code" type="text" id="code" class="form-control"
-                                            placeholder="Kode Satker" autocomplete="off" required>
-                                        <span id="code-error" class="invalid-feedback" role="alert">
-                                        </span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="baes1">Kode BAES1<span class="text-warning">*</span></label>
-                                        <input name="baes1" type="text" id="baes1" class="form-control"
-                                            placeholder="Kode Satker" autocomplete="off" required>
-                                        <span id="baes1-error" class="invalid-feedback" role="alert">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>
-                                        Simpan</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="trashWorkunitModal" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-xl">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Tempat Sampah</h5>
-                            </div>
-                            <div class="modal-body">
-                                <div class="table-responsive">
-                                    <table id="dataTrashWorkunit" class="table table-bordered table-striped"
-                                        style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th style="width: 1%">#</th>
-                                                <th>Nama Satker</th>
-                                                <th>Kode Satker</th>
-                                                <th>Kode BAES1</th>
-                                                <th>Tgl Hapus</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -107,6 +36,76 @@
                         </thead>
                     </table>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="storeWorkunitModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="storeWorkunitModalLabel">Tambah Satker</h5>
+            </div>
+            <form id="storeWorkunit" method="POST" action="{{ route('master_workunit.store') }}">
+                @csrf
+                <input name="id" type="hidden" id="id" value="">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">Nama Satker<span class="text-warning">*</span></label>
+                        <input name="name" type="text" id="name" class="form-control" placeholder="Nama Satker"
+                            autocomplete="off" required>
+                        <span id="name-error" class="invalid-feedback" role="alert">
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="code">Kode Satker<span class="text-warning">*</span></label>
+                        <input name="code" type="text" id="code" class="form-control" placeholder="Kode Satker"
+                            autocomplete="off" required>
+                        <span id="code-error" class="invalid-feedback" role="alert">
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="baes1">Kode BAES1<span class="text-warning">*</span></label>
+                        <input name="baes1" type="text" id="baes1" class="form-control" placeholder="Kode Satker"
+                            autocomplete="off" required>
+                        <span id="baes1-error" class="invalid-feedback" role="alert">
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>
+                        Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="trashWorkunitModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tempat Sampah</h5>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="dataTrashWorkunit" class="table table-bordered table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th style="width: 1%">#</th>
+                                <th>Nama Satker</th>
+                                <th>Kode Satker</th>
+                                <th>Kode BAES1</th>
+                                <th>Tgl Hapus</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>

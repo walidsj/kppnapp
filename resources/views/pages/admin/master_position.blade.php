@@ -20,61 +20,6 @@
                     data-toggle="modal" data-target="#trashPositionModal">
                     <i class="fas fa-trash"></i> Trash
                 </button>
-                <!-- Modal -->
-                <div class="modal fade" id="storePositionModal" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="storePositionModalLabel">Tambah Jabatan</h5>
-                            </div>
-                            <form id="storePosition" method="POST" action="{{ route('master_position.store') }}">
-                                @csrf
-                                <input name="id" type="hidden" id="id" value="">
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="name">Nama Jabatan<span class="text-warning">*</span></label>
-                                        <input name="name" type="text" id="name" class="form-control"
-                                            placeholder="Nama Jabatan" autocomplete="off" required>
-                                        <span id="name-error" class="invalid-feedback" role="alert">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>
-                                        Simpan</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="trashPositionModal" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-xl">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Tempat Sampah</h5>
-                            </div>
-                            <div class="modal-body">
-                                <div class="table-responsive">
-                                    <table id="dataTrashPosition" class="table table-bordered table-striped"
-                                        style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th style="width: 1%">#</th>
-                                                <th>Nama Jabatan</th>
-                                                <th>Tgl Hapus</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -89,6 +34,60 @@
                         </thead>
                     </table>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="storePositionModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="storePositionModalLabel">Tambah Jabatan</h5>
+            </div>
+            <form id="storePosition" method="POST" action="{{ route('master_position.store') }}">
+                @csrf
+                <input name="id" type="hidden" id="id" value="">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">Nama Jabatan<span class="text-warning">*</span></label>
+                        <input name="name" type="text" id="name" class="form-control" placeholder="Nama Jabatan"
+                            autocomplete="off" required>
+                        <span id="name-error" class="invalid-feedback" role="alert">
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>
+                        Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="trashPositionModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tempat Sampah</h5>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="dataTrashPosition" class="table table-bordered table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th style="width: 1%">#</th>
+                                <th>Nama Jabatan</th>
+                                <th>Tgl Hapus</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>

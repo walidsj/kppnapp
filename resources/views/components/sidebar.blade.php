@@ -125,18 +125,24 @@
                   </li>
                </ul>
             </li>
-            @endif
-            {{-- <li class="nav-item">
-               <a href="{{ route('home') }}" class="nav-link">
-            <i class="nav-icon fas fa-user-friends"></i>
-            <p>Data Moderator</p>
-            </a>
+            <li class="nav-item">
+               <a href="{{ route('moderator_list') }}"
+                  class="nav-link @if(request()->routeIs('moderator_list')) active @endif">
+                  <i class="nav-icon fas fa-user-friends"></i>
+                  <p>Data Moderator</p>
+               </a>
             </li>
             <li class="nav-item">
-               <a href="{{ route('home') }}" class="nav-link">
-                  <i class="nav-icon fas fa-cogs"></i>
-                  <p>Backup & Restore</p>
+               <a href="{{ route('admin_list') }}" class="nav-link @if(request()->routeIs('admin_list')) active @endif">
+                  <i class="nav-icon fas fa-user-cog"></i>
+                  <p>Data Admin</p>
                </a>
+            </li>
+            {{-- <li class="nav-item">
+               <a href="{{ route('home') }}" class="nav-link">
+            <i class="nav-icon fas fa-cogs"></i>
+            <p>Backup & Restore</p>
+            </a>
             </li>
             <li class="nav-item">
                <a href="{{ route('home') }}" class="nav-link">
@@ -144,6 +150,7 @@
                   <p>Info Aplikasi</p>
                </a>
             </li> --}}
+            @endif
          </ul>
       </nav>
    </div>

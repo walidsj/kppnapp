@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Auth;
 class PositionController extends Controller
 {
     //
-    public function position_index()
+    public function index()
     {
         return view('pages.admin.master_position');
     }
 
-    public function position_get(Request $request)
+    public function get(Request $request)
     {
         $this->validate($request, [
             'id' => 'required',
@@ -27,7 +27,7 @@ class PositionController extends Controller
         return response()->json();
     }
 
-    public function position_store(Request $request)
+    public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|min:3|max:255',
@@ -41,7 +41,7 @@ class PositionController extends Controller
         return response()->json();
     }
 
-    public function position_update(Request $request)
+    public function update(Request $request)
     {
         $this->validate($request, [
             'id' => 'required',
@@ -56,7 +56,7 @@ class PositionController extends Controller
         return response()->json();
     }
 
-    public function position_destroy(Request $request)
+    public function destroy(Request $request)
     {
         $this->validate($request, [
             'id' => 'required|not_in:' . Auth::user()->position->id,
@@ -69,7 +69,7 @@ class PositionController extends Controller
         return response()->json();
     }
 
-    public function position_restore(Request $request)
+    public function restore(Request $request)
     {
         $this->validate($request, [
             'id' => 'required',
@@ -82,7 +82,7 @@ class PositionController extends Controller
         return response()->json();
     }
 
-    public function position_destroy_permanent(Request $request)
+    public function destroy_permanent(Request $request)
     {
         $this->validate($request, [
             'id' => 'required',
@@ -100,7 +100,7 @@ class PositionController extends Controller
     # Pusing Banget Ga Tuh!
     # Semangat
     # -----------------------------------------------------------------
-    public function datatable_position(Request $request)
+    public function datatable(Request $request)
     {
         $search = $request->search['value'];
         $limit = $request->length;
@@ -126,7 +126,7 @@ class PositionController extends Controller
         return response()->json($callback, 200)->header('Content-Type', 'application/json');
     }
 
-    public function datatable_trash_position(Request $request)
+    public function datatable_trash(Request $request)
     {
         $search = $request->search['value'];
         $limit = $request->length;
