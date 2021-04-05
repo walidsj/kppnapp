@@ -10,7 +10,7 @@
     <div class="form-group text-center">
         <a href="{{ route('home') }}">
             <img class="img" alt="Aplikasi KPPN Purwodadi" height="48"
-                src="{{ asset('assets/img/logo_kppn_pwd.png') }}">
+                src="{{ asset('assets/img/logo-siwanda-2.png') }}">
         </a>
     </div>
     <div class="login-box-msg">
@@ -80,15 +80,12 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="workunit_id">Satuan Kerja<span class="text-warning">*</span></label>
-                        <select name="workunit_id" class="form-control select2" id="workunit_id" style="width: 100%;"
+                        <select name="workunit_id" class="form-control" id="workunit_id" style="width: 100%;"
                             autocomplete="off" required>
-                            <option disabled selected>Pilih Satuan Kerja..</option>
-                            @foreach ($workunits as $workunit)
-                            <option value="{{ $workunit->id }}"
-                                {{ (old('workunit_id') == $workunit->id ? 'selected' : '') }}>
-                                {{ $workunit->code }} - {{ $workunit->name }}
-                            </option>
-                            @endforeach
+                            @if(old('workunit_id'))
+                            <option value="{{ old('workunit_id') }}">
+                                {{ \App\Workunit::where('id', old('workunit_id'))->value('name') }} </option>
+                            @endif
                         </select>
                         @error('workunit_id')
                         <span class="invalid-feedback" role="alert">
@@ -121,12 +118,10 @@
                         <label for="position_id">Jabatan<span class="text-warning">*</span></label>
                         <select name="position_id" class="form-control select2" id="position_id" style="width: 100%;"
                             autocomplete="off" required>
-                            <option disabled selected>Pilih Jabatan..</option>
-                            @foreach ($positions as $position)
-                            <option value="{{ $position->id }}"
-                                {{ (old('position_id') == $position->id ? 'selected' : '') }}>
-                                {{ $position->name }}</option>
-                            @endforeach
+                            @if(old('position_id'))
+                            <option value="{{ old('position_id') }}">
+                                {{ \App\Position::where('id', old('position_id'))->value('name') }} </option>
+                            @endif
                         </select>
                         @error('position_id')
                         <span class="invalid-feedback" role="alert">
@@ -160,4 +155,62 @@
     </div>
     @endguest
 </div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+    $(function(){
+        $('#workunit_id').select2({
+            placeholder: 'Pilih Satuan Kerja...',
+            allowClear: true,
+            ajax: {
+                url: '{{ route('api_workunits') }}',
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        search: params.term
+                    }
+                },
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                text: item.code+ ' - ' +item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        });
+
+        $('#position_id').select2({
+            placeholder: 'Pilih Jabatan...',
+            allowClear: true,
+            ajax: {
+                url: '{{ route('api_positions') }}',
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        search: params.term
+                    }
+                },
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        });
+    });
+</script>
 @endsection

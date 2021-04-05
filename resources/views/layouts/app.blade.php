@@ -31,14 +31,24 @@
 </head>
 
 <body class="@yield('body-class', '')">
+
     @yield('app')
 
     <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+    {{-- <script type="text/javascript" src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+    --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="{{ asset('assets/plugins/select2/js/select2.full.min.js') }}"></script>
-    @yield('scripts')
     <script type="text/javascript" src="{{ asset('assets/js/adminlte.js') }}"></script>
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
+    @yield('scripts')
     <script type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script>
 </body>
 

@@ -19,3 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/upcoming-agenda', 'UpcomingAgendaController@get_api');
 Route::post('/agenda/{slug}', 'AgendaController@get_api_detail');
+
+// get data for ajax
+
+Route::prefix('data')->group(
+    function () {
+        Route::get('/workunits', 'ApiController@get_workunits')->name('api_workunits');
+        Route::get('/positions', 'ApiController@get_positions')->name('api_positions');
+    }
+);

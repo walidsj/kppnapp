@@ -60,6 +60,6 @@ $(".passwordtoggle").on("click", function () {
 	}
 });
 
-$('#name').on("change", function () {
-	this.value = $('#name').val().toUpperCase();
-});
+// $('#name').on("change", function () {
+// 	this.value = $('#name').val().toUpperCase();
+// });

@@ -12563,8 +12563,10 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini)
 .brand-link .brand-image {
 	float: left;
 	line-height: 0.8;
-	margin-left: 0.8rem;
-	margin-right: 0.5rem;
+	/* margin-left: 0.8rem; */
+	margin-left: 1.25rem;
+	margin-right: 1.25rem;
+	/* margin-right: 0.5rem; */
 	margin-top: -3px;
 	max-height: 33px;
 	width: auto;

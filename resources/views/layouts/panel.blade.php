@@ -18,9 +18,6 @@
 </div>
 @endsection
 
-
-
-
 @section('stylesheets')
 <link rel="stylesheet" href="{{ asset('assets/plugins/select2/css/select2.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
@@ -29,7 +26,6 @@
 <link rel="stylesheet" href="{{ asset('assets/plugins/fullcalendar-timegrid/main.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/plugins/fullcalendar-bootstrap/main.min.css') }}">
 @endsection
-
 
 @section('scripts')
 <script src="{{ asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}">

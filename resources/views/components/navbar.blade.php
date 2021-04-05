@@ -12,7 +12,7 @@
             <img height="20" src="{{ asset('assets/img/avatar.png') }}" class="img img-circle " alt="">
          </a>
          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right shadow">
-            <a href="{{ route('home') }}" class="dropdown-item">
+            <a href="{{ route('home') }}" class="dropdown-item text-truncate">
                <span class="font-weight-bold">{{ Auth::user()->name }}</span>
                <br>
                <small class="text-muted">
