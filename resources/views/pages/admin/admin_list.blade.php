@@ -136,8 +136,8 @@
                             orderable: false
                         },
                         { data: 'name' },
-                        { data: 'workunit.name' },
-                        { data: 'position.name' },
+                        { data: 'workunit.name', orderable: false },
+                        { data: 'position.name', orderable: false },
                         { data: 'nip' },
                         { data: 'role' },
                         { data: 'email' },
@@ -181,8 +181,8 @@
                     orderable: false
                 },
                 { data: 'name' },
-                { data: 'workunit.name' },
-                { data: 'position.name' },
+                { data: 'workunit.name', orderable: false },
+                { data: 'position.name', orderable: false },
                 { data: 'nip' },
                 { data: 'role' },
                 { data: 'email' },
