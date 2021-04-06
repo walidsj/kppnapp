@@ -28,6 +28,7 @@ Route::middleware(['auth', 'verified'])->group(
         Route::get('/agenda', 'AgendaController@index')->name('agenda');
 
         Route::get('/agenda/{slug}', 'AgendaController@detail')->name('agenda_detail');
+        Route::get('/contact-us', 'InfoController@user_contact_index')->name('contact');
 
 
         #--------------------------------------------------------------------
@@ -35,6 +36,8 @@ Route::middleware(['auth', 'verified'])->group(
         #--------------------------------------------------------------------
         Route::middleware(['auth.admin'])->group(
             function () {
+                Route::get('/application-info', 'InfoController@index')->name('application_info');
+
                 #---- route list moderator & admin
                 Route::get('/moderator-list', 'ModeratorAdminController@index')->name('moderator_list');
                 Route::put('/moderator-list', 'ModeratorAdminController@update')->name('moderator_list.update');
@@ -66,7 +69,7 @@ Route::middleware(['auth', 'verified'])->group(
                         Route::post('/data/position/trash', 'PositionController@datatable_trash')->name('datatable_trash_position');
                         #-------------------------------- jangan diutik-utik plis ----
 
-                        # MASTER DATA WORKUNIT/SATUAN KERJA #
+                        # MASTER DATA WORKUNIT/SATUAN KERJA --------------------------
                         Route::get('/workunit', 'WorkunitController@index')->name('master_workunit');
 
                         Route::get('/workunit/get', 'WorkunitController@get')->name('master_workunit.get');
@@ -79,6 +82,36 @@ Route::middleware(['auth', 'verified'])->group(
 
                         Route::post('/data/workunit', 'WorkunitController@datatable')->name('datatable_workunit');
                         Route::post('/data/workunit/trash', 'WorkunitController@datatable_trash')->name('datatable_trash_workunit');
+                        #-------------------------------- jangan diutik-utik plis ----
+
+                        # MASTER DATA STATUS KEGIATAN --------------------------------
+                        Route::get('/status-agenda', 'StatusAgendaController@index')->name('master_status_agenda');
+
+                        Route::get('/status-agenda/get', 'StatusAgendaController@get')->name('master_status_agenda.get');
+                        Route::post('/status-agenda', 'StatusAgendaController@store')->name('master_status_agenda.store');
+                        Route::put('/status-agenda', 'StatusAgendaController@update')->name('master_status_agenda.update');
+                        Route::delete('/status-agenda', 'StatusAgendaController@destroy')->name('master_status_agenda.destroy');
+
+                        Route::delete('/status-agenda/delete', 'StatusAgendaController@destroy_permanent')->name('master_status_agenda.destroy_permanent');
+                        Route::put('/status-agenda/restore', 'StatusAgendaController@restore')->name('master_status_agenda.restore');
+
+                        Route::post('/data/status-agenda', 'StatusAgendaController@datatable')->name('datatable_status_agenda');
+                        Route::post('/data/status-agenda/trash', 'StatusAgendaController@datatable_trash')->name('datatable_trash_status_agenda');
+                        #-------------------------------- jangan diutik-utik plis ----
+
+                        # MASTER DATA STATUS KEGIATAN --------------------------------
+                        Route::get('/contact', 'InfoController@contact_index')->name('master_contact');
+
+                        Route::get('/contact/get', 'InfoController@contact_get')->name('master_contact.get');
+                        Route::post('/contact', 'InfoController@contact_store')->name('master_contact.store');
+                        Route::put('/contact', 'InfoController@contact_update')->name('master_contact.update');
+                        Route::delete('/contact', 'InfoController@contact_destroy')->name('master_contact.destroy');
+
+                        Route::delete('/contact/delete', 'InfoController@contact_destroy_permanent')->name('master_contact.destroy_permanent');
+                        Route::put('/contact/restore', 'InfoController@contact_restore')->name('master_contact.restore');
+
+                        Route::post('/data/contact', 'InfoController@contact_datatable')->name('datatable_contact');
+                        Route::post('/data/contact/trash', 'InfoController@contact_datatable_trash')->name('datatable_trash_contact');
                         #-------------------------------- jangan diutik-utik plis ----
                     }
                 );

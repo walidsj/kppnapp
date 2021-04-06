@@ -29,13 +29,14 @@
             <i class="nav-icon fas fa-list"></i>
             <p>Grup Forum & FAQ</p>
             </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
-               <a href="{{ route('home') }}" class="nav-link">
+               <a href="{{ route('contact') }}" class="nav-link @if(request()->routeIs('contact')) active @endif">
                   <i class="nav-icon fas fa-phone"></i>
                   <p>Hubungi KPPN</p>
                </a>
             </li>
+            {{--
             <li class="nav-header font-weight-bold text-uppercase">Moderator</li>
             <li class="nav-item has-treeview">
                <a href="#" class="nav-link">
@@ -123,6 +124,20 @@
                         <p>Daftar Satker</p>
                      </a>
                   </li>
+                  <li class="nav-item">
+                     <a href="{{ route('master_status_agenda') }}"
+                        class="nav-link {@if(request()->routeIs('master_status_agenda')) active @endif">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Daftar Status Kegiatan</p>
+                     </a>
+                  </li>
+                  <li class="nav-item">
+                     <a href="{{ route('master_contact') }}"
+                        class="nav-link {@if(request()->routeIs('master_contact')) active @endif">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Daftar Kontak</p>
+                     </a>
+                  </li>
                </ul>
             </li>
             <li class="nav-item">
@@ -144,12 +159,14 @@
             <p>Backup & Restore</p>
             </a>
             </li>
+            --}}
             <li class="nav-item">
-               <a href="{{ route('home') }}" class="nav-link">
+               <a href="{{ route('application_info') }}"
+                  class="nav-link @if(request()->routeIs('application_info')) active @endif">
                   <i class="nav-icon fas fa-exclamation-circle"></i>
                   <p>Info Aplikasi</p>
                </a>
-            </li> --}}
+            </li>
             @endif
          </ul>
       </nav>

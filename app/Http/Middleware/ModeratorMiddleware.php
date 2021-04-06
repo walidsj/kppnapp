@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class AdminMiddleware
+class ModeratorMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,10 +15,9 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->user()->role == 'admin') {
+        if (auth()->user()->role == 'moderator' || auth()->user()->role == 'admin') {
             return $next($request);
         }
-        // return redirect('home')->with('error', 'Tidak bisa dibuka. Anda bukan Admin!');
         return abort(404);
     }
 }
