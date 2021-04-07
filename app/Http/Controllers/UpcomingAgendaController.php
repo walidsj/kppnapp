@@ -12,8 +12,7 @@ class UpcomingAgendaController extends Controller
     //
     public function index()
     {
-        $agenda = new Agenda;
-        $upcoming_agendas = $agenda->where('start', '>', Carbon::now())->where(function ($query) {
+        $upcoming_agendas = Agenda::where('start', '>', Carbon::now())->where(function ($query) {
             $query->whereNull('workunit_id')->orWhereRaw('FIND_IN_SET("' . Auth::user()->workunit_id . '",workunit_id)');
         })->orderBy('start', 'asc')->get()->groupBy(function ($date) {
             return Carbon::parse($date->start)->isoFormat('MMMM YYYY');
@@ -24,8 +23,7 @@ class UpcomingAgendaController extends Controller
 
     public function get_api()
     {
-        $agenda = new Agenda;
-        $upcoming_agendas = $agenda->where('start', '>', Carbon::now())
+        $upcoming_agendas = Agenda::where('start', '>', Carbon::now())
             // ->where(function ($query) {
             //     $query->whereNull('workunit_id')->orWhereRaw('FIND_IN_SET("' . Auth::user()->workunit_id . '",workunit_id)');
             // })

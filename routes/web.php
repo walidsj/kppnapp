@@ -43,7 +43,7 @@ Route::middleware(['auth', 'verified'])->group(
                 Route::put('/moderator/agenda', 'AgendaController@moderator_agenda_update')->name('moderator.agenda.update');
                 Route::delete('/moderator/agenda/delete', 'AgendaController@moderator_agenda_destroy')->name('moderator.agenda.delete');
 
-                Route::delete('/moderator/agenda/destroy', 'AgendaController@moderator_destroy_permanent')->name('moderator.agenda.destroy');
+                Route::delete('/moderator/agenda/destroy', 'AgendaController@moderator_agenda_destroy_permanent')->name('moderator.agenda.destroy');
                 Route::put('/moderator/agenda/restore', 'AgendaController@moderator_agenda_restore')->name('moderator.agenda.restore');
 
                 Route::post('/moderator/agenda/data', 'AgendaController@moderator_agenda_datatable')->name('moderator.agenda.data');

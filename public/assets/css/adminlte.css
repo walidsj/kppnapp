@@ -22941,6 +22941,14 @@ html.maximized-card {
 	height: calc(2.25rem + 2px);
 }
 
+.select2-container--default .select2-selection--multiple {
+	border-radius: 1rem;
+}
+
+.select2-container .select2-search--inline .select2-search__field {
+    font-size: 1rem;
+}
+
 .text-sm .select2-container--default .select2-selection--single,
 select.form-control-sm~.select2-container--default .select2-selection--single {
 	font-size: 0.875rem;

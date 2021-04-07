@@ -26,5 +26,6 @@ Route::prefix('data')->group(
     function () {
         Route::get('/workunits', 'ApiController@get_workunits')->name('api_workunits');
         Route::get('/positions', 'ApiController@get_positions')->name('api_positions');
+        Route::get('/status-agendas', 'ApiController@get_status_agendas')->name('api_status_agendas');
     }
 );

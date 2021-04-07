@@ -1,12 +1,12 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => 'v5.8.35',
-    'version' => '5.8.35.0',
+    'pretty_version' => 'dev-main',
+    'version' => 'dev-main',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '9b21cad3ba596b1a13da75a6c797ed71c5fa0437',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -361,12 +361,12 @@
     ),
     'laravel/laravel' => 
     array (
-      'pretty_version' => 'v5.8.35',
-      'version' => '5.8.35.0',
+      'pretty_version' => 'dev-main',
+      'version' => 'dev-main',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '9b21cad3ba596b1a13da75a6c797ed71c5fa0437',
     ),
     'laravel/tinker' => 
     array (
@@ -635,8 +635,8 @@
     array (
       'provided' => 
       array (
-        0 => '1.0',
-        1 => '1.0.0',
+        0 => '1.0.0',
+        1 => '1.0',
       ),
     ),
     'psr/simple-cache' => 
@@ -771,6 +771,15 @@
       array (
       ),
       'reference' => '99732be0ddb3361e16ad77b68ba41efc8e979019',
+    ),
+    'staudenmeir/eloquent-json-relations' => 
+    array (
+      'pretty_version' => 'v1.2.4',
+      'version' => '1.2.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '62202b5a9b8a681807940f87b789b406eee3d96d',
     ),
     'swiftmailer/swiftmailer' => 
     array (

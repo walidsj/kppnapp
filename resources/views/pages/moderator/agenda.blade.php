@@ -5,6 +5,8 @@
 @section('stylesheets')
 <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+<link rel="stylesheet"
+   href="{{ asset('assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
 @endsection
 
 @section('content')
@@ -71,43 +73,47 @@
                </div>
                <div class="form-group">
                   <label for="start">Tgl. Mulai<span class="text-warning">*</span></label>
-                  <input name="start" type="text" id="start" class="form-control" placeholder="Tgl. Mulai"
-                     autocomplete="off" required>
+                  {{-- <input name="start" type="text" id="start" class="form-control" placeholder="Tgl. Mulai"
+                     autocomplete="off" required> --}}
+                  <input name="start" type="text" class="form-control datetimepicker-input" id="start"
+                     data-toggle="datetimepicker" data-target="#start" placeholder="Tgl. Mulai" />
                   <span id="start-error" class="invalid-feedback" role="alert">
                   </span>
                </div>
                <div class="form-group">
                   <label for="end">Tgl. Selesai<span class="text-warning">*</span></label>
-                  <input name="end" type="text" id="end" class="form-control" placeholder="Tgl. Selesai"
-                     autocomplete="off" required>
+                  {{-- <input name="end" type="text" id="end" class="form-control" placeholder="Tgl. Selesai"
+                     autocomplete="off" required> --}}
+                  <input name="end" type="text" class="form-control datetimepicker-input" id="end"
+                     data-toggle="datetimepicker" data-target="#end" placeholder="Tgl. Selesai" />
                   <span id="end-error" class="invalid-feedback" role="alert">
                   </span>
                </div>
                <div class="form-group">
-                  <label for="link">Tautan<span class="text-warning">*</span></label>
+                  <label for="link">Tautan</label>
                   <textarea name="link" type="text" id="link" class="form-control" placeholder="Tautan" rows="2"
-                     autocomplete="off" required></textarea>
+                     autocomplete="off"></textarea>
                   <span id="link-error" class="invalid-feedback" role="alert">
                   </span>
                </div>
-               <div class="form-group">
+               {{-- <div class="form-group">
                   <label for="workunit_id">Satker</label>
-                  <input name="workunit_id" type="text" id="workunit_id" class="form-control" placeholder="Satker"
-                     autocomplete="off">
+                  <select id="workunit_id" name="workunit_id[]" class="select2 form-control" multiple="multiple"
+                     style="width: 100%;"></select>
                   <span id="workunit_id-error" class="invalid-feedback" role="alert">
                   </span>
-               </div>
+               </div> --}}
                <div class="form-group">
                   <label for="attachment">Lampiran</label>
-                  <input name="attachment" type="text" id="attachment" class="form-control" placeholder="Lampiran"
-                     autocomplete="off">
+                  <textarea name="attachment" type="text" id="attachment" class="form-control" placeholder="Lampiran"
+                     rows="2" autocomplete="off"></textarea>
                   <span id="attachment-error" class="invalid-feedback" role="alert">
                   </span>
                </div>
                <div class="form-group">
                   <label for="status_agenda_id">Sifat<span class="text-warning">*</span></label>
-                  <input name="status_agenda_id" type="text" id="status_agenda_id" class="form-control"
-                     placeholder="Sifat" autocomplete="off" required>
+                  <select name="status_agenda_id" class="select2 form-control" id="status_agenda_id"
+                     style="width: 100%;" autocomplete="off" required></select>
                   <span id="status_agenda_id-error" class="invalid-feedback" role="alert">
                   </span>
                </div>
@@ -156,6 +162,8 @@
 @endsection
 
 @section('scripts')
+<script src="{{ asset('assets/plugins/moment/moment.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
@@ -189,6 +197,7 @@
         $('#storeModeratorAgenda').attr('method', 'POST');
         $('#storeModeratorAgenda').attr('action', '{{ route('moderator.agenda.store') }}');
         $('#storeModeratorAgenda').trigger('reset');
+        $('#storeModeratorAgenda').find('.select2').val(null).trigger('change');
     });
 </script>
 <script type="text/javascript">
@@ -295,6 +304,7 @@
               success:function(res) {
                 Swal.fire('Berhasil', res.message, 'success');
                 $('#storeModeratorAgenda').trigger('reset');
+                $('#storeModeratorAgenda').find('.select2').val(null).trigger('change');
                 $('#dataModeratorAgenda').DataTable().ajax.reload();
                 $('#storeModeratorAgendaModal').modal('toggle');
               },
@@ -400,6 +410,78 @@
                 { responsivePriority: 1, targets: 1 }
             ]
         })
+    });
+</script>
+<script type="text/javascript">
+   $(function(){
+      $('#start').datetimepicker({
+         format: 'YYYY-MM-DD HH:mm:ss',
+         buttons: 
+         {
+            showToday: true,
+            showClear: true,
+            showClose: true
+         }
+      });
+      $('#end').datetimepicker({
+         format: 'YYYY-MM-DD HH:mm:ss',
+         buttons:
+         {
+            showToday: true,
+            showClear: true,
+            showClose: true
+         }
+      });
+      $('#status_agenda_id').select2({
+            placeholder: 'Pilih Sifat Kegiatan...',
+            allowClear: true,
+            ajax: {
+                url: '{{ route('api_status_agendas') }}',
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        search: params.term
+                    }
+                },
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        });
+        $('#workunit_id').select2({
+            placeholder: 'Pilih Satuan Kerja...',
+            allowClear: true,
+            ajax: {
+                url: '{{ route('api_workunits') }}',
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        search: params.term
+                    }
+                },
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                text: item.code+ ' - ' +item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        });
     });
 </script>
 @endsection

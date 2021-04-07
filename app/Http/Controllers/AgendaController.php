@@ -100,6 +100,7 @@ class AgendaController extends Controller
         $agenda->start = $request->start;
         $agenda->end = $request->end;
         $agenda->link = $request->link;
+        // $agenda->workunit_id = implode(',', $request->workunit_id[]);
         $agenda->attachment = $request->attachment;
         $agenda->status_agenda_id = $request->status_agenda_id;
         if ($agenda->save()) {
@@ -128,6 +129,7 @@ class AgendaController extends Controller
         $agenda->start = $request->start;
         $agenda->end = $request->end;
         $agenda->link = $request->link;
+        // $agenda->workunit_id = implode(',', $request->workunit_id[]);
         $agenda->attachment = $request->attachment;
         $agenda->status_agenda_id = $request->status_agenda_id;
         if ($agenda->save()) {
@@ -191,7 +193,12 @@ class AgendaController extends Controller
 
         $sql_total = Agenda::with('user')->with('status_agenda')->get()->count();
         $sql_data = Agenda::with('user')->with('status_agenda')->when($search, function ($q, $search) {
-            return $q->where('name', 'like', '%' . $search . '%')->orWhere('handphone', 'like', '%' . $search . '%');
+            return $q->where('title', 'like', '%' . $search . '%')
+                ->orWhere('description', 'like', '%' . $search . '%')
+                ->orWhere('start', 'like', '%' . $search . '%')
+                ->orWhere('end', 'like', '%' . $search . '%')
+                ->orWhere('attachment', 'like', '%' . $search . '%')
+                ->orWhere('link', 'like', '%' . $search . '%');
         })->skip($start)->take($limit)->orderBy($order_field, $order_ascdesc)->get();
 
         ($search) ? $sql_filter = count($sql_data) : $sql_filter = $sql_total;
@@ -217,7 +224,12 @@ class AgendaController extends Controller
 
         $sql_total = Agenda::onlyTrashed()->with('user')->with('status_agenda')->get()->count();
         $sql_data = Agenda::onlyTrashed()->with('user')->with('status_agenda')->when($search, function ($q, $search) {
-            return $q->where('name', 'like', '%' . $search . '%')->orWhere('handphone', 'like', '%' . $search . '%');
+            return $q->where('title', 'like', '%' . $search . '%')
+                ->orWhere('description', 'like', '%' . $search . '%')
+                ->orWhere('start', 'like', '%' . $search . '%')
+                ->orWhere('end', 'like', '%' . $search . '%')
+                ->orWhere('attachment', 'like', '%' . $search . '%')
+                ->orWhere('link', 'like', '%' . $search . '%');
         })->skip($start)->take($limit)->orderBy($order_field, $order_ascdesc)->get();
 
         ($search) ? $sql_filter = count($sql_data) : $sql_filter = $sql_total;

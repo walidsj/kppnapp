@@ -15,6 +15,10 @@ class Agenda extends Model
         'title', 'description', 'user_id', 'open_gate_date', 'start_date', 'end_date', 'image', 'link', 'attachment', 'status_agenda_id'
     ];
 
+    protected $casts = [
+        'workunit_id' => 'json',
+    ];
+
     public function user()
     {
         return $this->belongsTo('App\User');
