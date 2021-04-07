@@ -73,7 +73,6 @@ class ComposerStaticInit2287b5c730b8107289d1eea61d1b3824
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
-            'Staudenmeir\\EloquentJsonRelations\\' => 34,
         ),
         'R' => 
         array (
@@ -275,10 +274,6 @@ class ComposerStaticInit2287b5c730b8107289d1eea61d1b3824
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
-        ),
-        'Staudenmeir\\EloquentJsonRelations\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src',
         ),
         'Ramsey\\Uuid\\' => 
         array (
@@ -3416,26 +3411,6 @@ class ComposerStaticInit2287b5c730b8107289d1eea61d1b3824
         'SebastianBergmann\\Timer\\Timer' => __DIR__ . '/..' . '/phpunit/php-timer/src/Timer.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'StatusAgendasTableSeeder' => __DIR__ . '/../..' . '/database/seeds/StatusAgendasTableSeeder.php',
-        'Staudenmeir\\EloquentJsonRelations\\Grammars\\JsonGrammar' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Grammars/JsonGrammar.php',
-        'Staudenmeir\\EloquentJsonRelations\\Grammars\\MySqlGrammar' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Grammars/MySqlGrammar.php',
-        'Staudenmeir\\EloquentJsonRelations\\Grammars\\PostgresGrammar' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Grammars/PostgresGrammar.php',
-        'Staudenmeir\\EloquentJsonRelations\\Grammars\\SqlServerGrammar' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Grammars/SqlServerGrammar.php',
-        'Staudenmeir\\EloquentJsonRelations\\HasJsonRelationships' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/HasJsonRelationships.php',
-        'Staudenmeir\\EloquentJsonRelations\\Relations\\BelongsToJson' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Relations/BelongsToJson.php',
-        'Staudenmeir\\EloquentJsonRelations\\Relations\\HasManyJson' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Relations/HasManyJson.php',
-        'Staudenmeir\\EloquentJsonRelations\\Relations\\InteractsWithPivotRecords' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Relations/InteractsWithPivotRecords.php',
-        'Staudenmeir\\EloquentJsonRelations\\Relations\\IsJsonRelation' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Relations/IsJsonRelation.php',
-        'Staudenmeir\\EloquentJsonRelations\\Relations\\Postgres\\BelongsTo' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Relations/Postgres/BelongsTo.php',
-        'Staudenmeir\\EloquentJsonRelations\\Relations\\Postgres\\HasMany' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Relations/Postgres/HasMany.php',
-        'Staudenmeir\\EloquentJsonRelations\\Relations\\Postgres\\HasManyThrough' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Relations/Postgres/HasManyThrough.php',
-        'Staudenmeir\\EloquentJsonRelations\\Relations\\Postgres\\HasOne' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Relations/Postgres/HasOne.php',
-        'Staudenmeir\\EloquentJsonRelations\\Relations\\Postgres\\HasOneOrMany' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Relations/Postgres/HasOneOrMany.php',
-        'Staudenmeir\\EloquentJsonRelations\\Relations\\Postgres\\HasOneOrManyThrough' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Relations/Postgres/HasOneOrManyThrough.php',
-        'Staudenmeir\\EloquentJsonRelations\\Relations\\Postgres\\HasOneThrough' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Relations/Postgres/HasOneThrough.php',
-        'Staudenmeir\\EloquentJsonRelations\\Relations\\Postgres\\IsPostgresRelation' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Relations/Postgres/IsPostgresRelation.php',
-        'Staudenmeir\\EloquentJsonRelations\\Relations\\Postgres\\MorphMany' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Relations/Postgres/MorphMany.php',
-        'Staudenmeir\\EloquentJsonRelations\\Relations\\Postgres\\MorphOne' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Relations/Postgres/MorphOne.php',
-        'Staudenmeir\\EloquentJsonRelations\\Relations\\Postgres\\MorphOneOrMany' => __DIR__ . '/..' . '/staudenmeir/eloquent-json-relations/src/Relations/Postgres/MorphOneOrMany.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\CommandLoader\\CommandLoaderInterface' => __DIR__ . '/..' . '/symfony/console/CommandLoader/CommandLoaderInterface.php',
