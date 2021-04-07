@@ -13,25 +13,25 @@ class UpcomingAgendaController extends Controller
     public function index()
     {
         $agenda = new Agenda;
-        $upcoming_agendas = $agenda->where('start_date', '>', Carbon::now())->where(function ($query) {
+        $upcoming_agendas = $agenda->where('start', '>', Carbon::now())->where(function ($query) {
             $query->whereNull('workunit_id')->orWhereRaw('FIND_IN_SET("' . Auth::user()->workunit_id . '",workunit_id)');
-        })->get()->groupBy(function ($date) {
-            return Carbon::parse($date->start_date)->isoFormat('MMMM YYYY');
+        })->orderBy('start', 'asc')->get()->groupBy(function ($date) {
+            return Carbon::parse($date->start)->isoFormat('MMMM YYYY');
         });
 
-        return view('pages.upcoming-agenda', compact('upcoming_agendas'));
+        return view('pages.upcoming_agenda', compact('upcoming_agendas'));
     }
 
     public function get_api()
     {
         $agenda = new Agenda;
-        $upcoming_agendas = $agenda->where('start_date', '>', Carbon::now())
+        $upcoming_agendas = $agenda->where('start', '>', Carbon::now())
             // ->where(function ($query) {
             //     $query->whereNull('workunit_id')->orWhereRaw('FIND_IN_SET("' . Auth::user()->workunit_id . '",workunit_id)');
             // })
             ->get()
             // ->groupBy(function ($date) {
-            //     return Carbon::parse($date->start_date)->isoFormat('MMMM YYYY');
+            //     return Carbon::parse($date->start)->isoFormat('MMMM YYYY');
             // })
         ;
 

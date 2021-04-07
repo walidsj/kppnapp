@@ -12,7 +12,7 @@ class Agenda extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'title', 'description', 'user_id', 'open_gate_date', 'start_date', 'end_date', 'image', 'link', 'attachment'
+        'title', 'description', 'user_id', 'open_gate_date', 'start_date', 'end_date', 'image', 'link', 'attachment', 'status_agenda_id'
     ];
 
     public function user()
@@ -27,6 +27,6 @@ class Agenda extends Model
 
     public function scopeOrdered($query)
     {
-        return $query->orderBy('start_date', 'asc')->get();
+        return $query->orderBy('start', 'asc')->get();
     }
 }

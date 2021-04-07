@@ -1,8 +1,8 @@
-<aside class="main-sidebar sidebar-light-primary shadow-sm"> <a href="{{ route('home') }}" class="brand-link"> <img
+<aside class="main-sidebar sidebar-light-primary shadow-sm"> <a class="brand-link"> <img
          src="{{ asset('assets/img/logo-siwanda.png') }}" alt="SIKKA BEM" class="brand-image"> <span
          class="brand-text font-weight-bolder">{{ config('app.name', 'Laravel') }}</span> </a>
    <div class="sidebar">
-      <nav class="mt-3">
+      <nav class="mt-3 pb-5">
          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-header font-weight-bold text-uppercase">Menu Navigasi</li>
             <li class="nav-item">
@@ -36,8 +36,16 @@
                   <p>Hubungi KPPN</p>
                </a>
             </li>
-            {{--
+            @if(Auth::user()->role == 'moderator' || Auth::user()->role == 'admin')
             <li class="nav-header font-weight-bold text-uppercase">Moderator</li>
+            <li class="nav-item">
+               <a href="{{ route('moderator.agenda') }}"
+                  class="nav-link @if(request()->routeIs('moderator.agenda')) active @endif">
+                  <i class="nav-icon fas fa-briefcase"></i>
+                  <p>Administrasi Kegiatan</p>
+               </a>
+            </li>
+            {{--
             <li class="nav-item has-treeview">
                <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-briefcase"></i>
@@ -101,10 +109,11 @@
                   </li>
                </ul>
             </li> --}}
+            @endif
             @if(Auth::user()->role == 'admin')
             <li class="nav-header font-weight-bold text-uppercase">Admin</li>
-            <li class="nav-item has-treeview @if(request()->is('master/*')) menu-open @endif">
-               <a href="#" class="nav-link @if(request()->is('master/*')) active @endif">
+            <li class="nav-item has-treeview @if(request()->is('admin/master/*')) menu-open @endif">
+               <a href="#" class="nav-link @if(request()->is('admin/master/*')) active @endif">
                   <i class="nav-icon fas fa-database"></i>
                   <p>Data Master</p>
                   <i class="fas fa-angle-left right"></i>
@@ -119,21 +128,21 @@
                   </li>
                   <li class="nav-item">
                      <a href="{{ route('master_workunit') }}"
-                        class="nav-link {@if(request()->routeIs('master_workunit')) active @endif">
+                        class="nav-link @if(request()->routeIs('master_workunit')) active @endif">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Daftar Satker</p>
                      </a>
                   </li>
                   <li class="nav-item">
                      <a href="{{ route('master_status_agenda') }}"
-                        class="nav-link {@if(request()->routeIs('master_status_agenda')) active @endif">
+                        class="nav-link @if(request()->routeIs('master_status_agenda')) active @endif">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Daftar Status Kegiatan</p>
                      </a>
                   </li>
                   <li class="nav-item">
                      <a href="{{ route('master_contact') }}"
-                        class="nav-link {@if(request()->routeIs('master_contact')) active @endif">
+                        class="nav-link @if(request()->routeIs('master_contact')) active @endif">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Daftar Kontak</p>
                      </a>
@@ -144,13 +153,13 @@
                <a href="{{ route('moderator_list') }}"
                   class="nav-link @if(request()->routeIs('moderator_list')) active @endif">
                   <i class="nav-icon fas fa-user-friends"></i>
-                  <p>Data Moderator</p>
+                  <p>Daftar Moderator</p>
                </a>
             </li>
             <li class="nav-item">
                <a href="{{ route('admin_list') }}" class="nav-link @if(request()->routeIs('admin_list')) active @endif">
                   <i class="nav-icon fas fa-user-cog"></i>
-                  <p>Data Admin</p>
+                  <p>Daftar Admin</p>
                </a>
             </li>
             {{-- <li class="nav-item">

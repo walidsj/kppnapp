@@ -19,7 +19,8 @@
                @foreach ($agendas as $agenda)
                <li class="item mx-3">
                   <div class="product-img">
-                     <img src="{{ $agenda->image }}" alt="Ajeng S. W." class="img-size-50 img-circle">
+                     <img src="{{ asset('assets/img/agenda.png') }}" alt="{{ $agenda->title }}"
+                        class="img-size-50 img-circle">
                   </div>
                   <div class="product-info">
                      <a class="text-dark product-title">{{ $agenda->title }}</a>
@@ -28,11 +29,11 @@
                      </span>
                      <span class="product-description">
                         <i class="far fa-calendar"></i>
-                        {{ \Carbon\Carbon::parse($agenda->start_date)->isoFormat('dddd, D MMMM YYYY') }}
+                        {{ \Carbon\Carbon::parse($agenda->start)->isoFormat('dddd, D MMMM YYYY') }}
                      </span>
                      <span class="product-description">
                         <i class="far fa-clock"></i>
-                        {{ \Carbon\Carbon::parse($agenda->start_date)->isoFormat('HH.mm') }} WIB
+                        {{ \Carbon\Carbon::parse($agenda->start)->isoFormat('HH.mm') }} WIB
                      </span>
                      @if($agenda->workunit_id)
                      <span class="product-description text-info">

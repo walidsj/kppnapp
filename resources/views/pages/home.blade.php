@@ -31,7 +31,8 @@
                     @forelse($monthly_agendas as $agenda)
                     <li class="item mx-3">
                         <div class="product-img">
-                            <img src="{{ $agenda->image }}" alt="Ajeng S. W." class="img-size-50 img-circle">
+                            <img src="{{ asset('assets/img/agenda.png') }}" alt="{{ $agenda->title }}"
+                                class="img-size-50 img-circle">
                         </div>
                         <div class="product-info">
                             <a class="text-dark product-title">{{ $agenda->title }}</a>
@@ -40,11 +41,11 @@
                             </span>
                             <span class="product-description">
                                 <i class="far fa-calendar"></i>
-                                {{ \Carbon\Carbon::parse($agenda->start_date)->isoFormat('dddd, D MMMM YYYY') }}
+                                {{ \Carbon\Carbon::parse($agenda->start)->isoFormat('dddd, D MMMM YYYY') }}
                             </span>
                             <span class="product-description">
                                 <i class="far fa-clock"></i>
-                                {{ \Carbon\Carbon::parse($agenda->start_date)->isoFormat('HH.mm') }} WIB
+                                {{ \Carbon\Carbon::parse($agenda->start)->isoFormat('HH.mm') }} WIB
                             </span>
                             @if($agenda->workunit_id)
                             <span class="product-description text-info">
@@ -66,4 +67,55 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('stylesheets')
+<link rel="stylesheet" href="{{ asset('assets/plugins/fullcalendar/main.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/fullcalendar-daygrid/main.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/fullcalendar-timegrid/main.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/fullcalendar-bootstrap/main.min.css') }}">
+@endsection
+
+@section('scripts')
+<script src="{{ asset('assets/plugins/moment/moment.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/fullcalendar/main.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/fullcalendar/locales/id.js') }}"></script>
+<script src="{{ asset('assets/plugins/fullcalendar-daygrid/main.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/fullcalendar-timegrid/main.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/fullcalendar-interaction/main.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/fullcalendar-bootstrap/main.min.js') }}"></script>
+<script>
+    $(function() { 
+        var Calendar = FullCalendar.Calendar; 
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new Calendar(calendarEl, { 
+            displayEventTime: true,
+            selectable: true,
+            plugins: [
+                'bootstrap',
+                'interaction',
+                'dayGrid',
+                'timeGrid'
+                ], 
+            header: { 
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek'
+            },
+            themeSystem: 'bootstrap',
+            locale: 'id',
+            events: '{{ route('agenda.get') }}', 
+            eventRender: function (event, element, view) {
+                if (event.allDay === 'true') {
+                    event.allDay = true;
+                } else {
+                    event.allDay = false;
+                }
+            },
+            editable: false, 
+            droppable: false 
+        }); 
+        calendar.render(); 
+    }) 
+</script>
 @endsection

@@ -19,9 +19,8 @@ class CreateAgendasTable extends Migration
             $table->string('slug');
             $table->text('description');
             $table->bigInteger('user_id')->unsigned();
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
-            $table->string('image')->nullable();
+            $table->dateTime('start');
+            $table->dateTime('end');
             $table->text('link')->nullable();
             $table->text('workunit_id')->nullable();
             $table->string('attachment')->nullable();

@@ -5,7 +5,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-8">
-        <div class="card shadow-sm mb-3">
+        <div class="card shadow-sm mb-4">
             <div class="card-body">
                 <ul class="list-group list-group-unbordered mt-0 mb-0">
                     <li class="list-group-item border-top-0">
@@ -42,8 +42,8 @@
                     <li class="list-group-item border-bottom-0">
                         <span class="d-block font-weight-bold">
                             <i class="fab fa-github"></i> Versi</span>
-                        Luanax
-                        1.0.0
+                        Lunatic 2
+                        v1.0.0
                     </li>
                     <li class="list-group-item border-bottom-0">
                         <span class="d-block font-weight-bold">

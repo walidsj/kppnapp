@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $agenda = new Agenda;
-        $monthly_agendas = $agenda->whereMonth('start_date', '=', Carbon::now())->where(function ($query) {
+        $monthly_agendas = $agenda->whereMonth('start', '=', Carbon::now())->where(function ($query) {
             $query->whereNull('workunit_id')->orWhereRaw('FIND_IN_SET("' . Auth::user()->workunit_id . '",workunit_id)');
         })->get();
 

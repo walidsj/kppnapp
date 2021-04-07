@@ -27,6 +27,7 @@
     @yield('stylesheets')
     <link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/select2/css/select2.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/select2/css/select2.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/adminlte.css') }}">
 </head>
 

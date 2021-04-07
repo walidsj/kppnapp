@@ -1,6 +1,6 @@
 @extends('layouts.panel')
 
-@section('title', 'Daftar Status Kegiatan')
+@section('title', 'Daftar Status')
 
 @section('stylesheets')
 <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -14,7 +14,7 @@
             <div class="card-body">
                 <button id="storeStatusAgendaModalButton" type="button" class="btn btn-primary" data-toggle="modal"
                     data-target="#storeStatusAgendaModal">
-                    <i class="fas fa-plus-circle"></i> Tambah Status Kegiatan
+                    <i class="fas fa-plus-circle"></i> Tambah Kategori
                 </button>
                 <button id="trashStatusAgendaModalButton" type="button" class="btn btn-danger float-right"
                     data-toggle="modal" data-target="#trashStatusAgendaModal">
@@ -27,7 +27,7 @@
                         <thead>
                             <tr>
                                 <th style="width: 1%">#</th>
-                                <th>Nama Status Kegiatan</th>
+                                <th>Kategori Status Kegiatan</th>
                                 <th>Tgl Dibuat</th>
                                 <th>Aksi</th>
                             </tr>
@@ -43,16 +43,16 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="storeStatusAgendaModalLabel">Tambah Status Kegiatan</h5>
+                <h5 class="modal-title" id="storeStatusAgendaModalLabel">Tambah Kategori</h5>
             </div>
             <form id="storeStatusAgenda" method="POST" action="{{ route('master_status_agenda.store') }}">
                 @csrf
                 <input name="id" type="hidden" id="id" value="">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="name">Nama Status Kegiatan<span class="text-warning">*</span></label>
-                        <input name="name" type="text" id="name" class="form-control" placeholder="Nama Status Kegiatan"
-                            autocomplete="off" required>
+                        <label for="name">Kategori Status Kegiatan<span class="text-warning">*</span></label>
+                        <input name="name" type="text" id="name" class="form-control"
+                            placeholder="Kategori Status Kegiatan" autocomplete="off" required>
                         <span id="name-error" class="invalid-feedback" role="alert">
                         </span>
                     </div>
@@ -78,7 +78,7 @@
                         <thead>
                             <tr>
                                 <th style="width: 1%">#</th>
-                                <th>Nama Status Kegiatan</th>
+                                <th>Kategori Status Kegiatan</th>
                                 <th>Tgl Hapus</th>
                                 <th>Aksi</th>
                             </tr>
@@ -103,7 +103,7 @@
         $('#storeStatusAgenda').trigger('reset');
         $('#storeStatusAgenda').attr('action', '{{ route('master_status_agenda.update') }}');
         $('#storeStatusAgenda').attr('method', 'PUT');
-        $('#storeStatusAgendaModalLabel').text('Edit Status Kegiatan');
+        $('#storeStatusAgendaModalLabel').text('Edit Kategori');
         $.ajax({
             url: '{{ route('master_status_agenda.get') }}',
             data: {id:id},
@@ -121,7 +121,7 @@
     }
 
     $('#storeStatusAgendaModalButton').click(function(){
-        $('#storeStatusAgendaModalLabel').text('Tambah Status Kegiatan');
+        $('#storeStatusAgendaModalLabel').text('Tambah Kategori');
         $('#storeStatusAgenda').attr('method', 'POST');
         $('#storeStatusAgenda').attr('action', '{{ route('master_status_agenda.store') }}');
         $('#storeStatusAgenda').trigger('reset');

@@ -1,6 +1,6 @@
 @extends('layouts.panel')
 
-@section('title', 'Daftar Admin')
+@section('title', 'Daftar Moderator')
 
 @section('stylesheets')
 <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
