@@ -60,12 +60,17 @@ class AgendaController extends Controller
             'agenda_id' => 'required',
         ]);
 
-        $position = new Present();
-        $position->agenda_id = $request->agenda_id;
-        $position->user_id = Auth::user()->id;
-        if ($position->save()) {
-            return response()->json(['message' => 'Anda telah dicatat hadir dalam kegiatan ini.'], 200);
+        $agenda = Agenda::where('start', '<=', Carbon::now()->addHour())->where('end', '>=', Carbon::now()->subHour())->findOrFail(intval($request->agenda_id));
+
+        if ($agenda) {
+            $position = new Present();
+            $position->agenda_id = $request->agenda_id;
+            $position->user_id = Auth::user()->id;
+            if ($position->save()) {
+                return response()->json(['message' => 'Anda telah dicatat hadir dalam kegiatan ini.'], 200);
+            }
         }
+
         return response()->json();
     }
 

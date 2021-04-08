@@ -120,7 +120,11 @@
                             );
                         },
                         error: function (response) {
-                            Swal.fire('Gagal Hapus', JSON.stringify(response.responseJSON.errors), 'error');
+                            error = JSON.stringify(response.responseJSON.errors);
+                            if(!error) {
+                               error = 'Presensi hanya bisa dilakukan 1 jam sebelum acara dimulai hingga 1 jam setelah acara selesai.'
+                            }
+                            Swal.fire('Gagal Presensi', error, 'error');
                         }
                     });
                 }

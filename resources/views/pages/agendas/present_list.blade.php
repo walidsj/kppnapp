@@ -78,7 +78,7 @@
                            <td>
                               <i class="text-success fas fa-check-circle"></i> HADIR
                               <br>
-                              <small>({{ $present->created_at }})</small>
+                              <small><i>{{ $present->created_at }}</i></small>
                            </td>
                         </tr>
                         @endforeach
