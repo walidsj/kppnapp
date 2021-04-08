@@ -50,6 +50,8 @@ class WorkunitController extends Controller
         $this->validate($request, [
             'id' => 'required',
             'name' => 'required|min:3|max:255',
+            'code' => 'required|min:3|max:255|unique:workunits',
+            'baes1' => 'required|min:3|max:255',
         ]);
 
         $workunit = Workunit::find(intval($request->id));

@@ -6,11 +6,10 @@
 @section('auth-box-class', '')
 
 @section('content')
-<div class="card-body register-card-body">
+<div class="card-body register-card-body" style="max-width: 100%">
     <div class="form-group text-center">
         <a href="{{ route('home') }}">
-            <img class="img" alt="Aplikasi KPPN Purwodadi" height="48"
-                src="{{ asset('assets/img/logo-siwanda-2.png') }}">
+            <img class="img" alt="Aplikasi KPPN Purwodadi" height="48" src="{{ asset('assets/img/logo-full.jpg') }}">
         </a>
     </div>
     <div class="login-box-msg">

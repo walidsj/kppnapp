@@ -1,6 +1,6 @@
 @extends('layouts.panel')
 
-@section('title', 'Daftar Jabatan')
+@section('title', 'Daftar User')
 
 @section('stylesheets')
 <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -9,25 +9,35 @@
 
 @section('content')
 <div class="row">
-    <div class="col-lg-8">
+    <div class="col">
         <div class="card shadow-sm mb-3">
             <div class="card-body">
-                <button id="storePositionModalButton" type="button" class="btn btn-primary" data-toggle="modal"
-                    data-target="#storePositionModal">
-                    <i class="fas fa-plus-circle"></i> Tambah Jabatan
-                </button>
-                <button id="trashPositionModalButton" type="button" class="btn btn-danger float-right"
-                    data-toggle="modal" data-target="#trashPositionModal">
-                    <i class="fas fa-trash"></i> Trash
+                <button id="trashUserModalButton" type="button" class="btn btn-danger float-right" data-toggle="modal"
+                    data-target="#trashUserModal">
+                    <i class="fas fa-trash"></i> User Nonaktif
                 </button>
             </div>
             <div class="card-body">
+                <div class="form-group">
+                    <div class="alert alert-warning" role="alert">
+                        <i class="fas fa-exclamation-triangle"></i> Moderator dapat menonaktifkan atau merestore akun
+                        dengan status role
+                        <i>User</i> saja.
+                    </div>
+                </div>
                 <div class="table-responsive">
-                    <table id="dataPosition" class="table table-bordered table-striped" style="width:100%">
+                    <table id="dataUser" class="table table-bordered table-striped" style="width:100%">
                         <thead>
                             <tr>
                                 <th style="width: 1%">#</th>
-                                <th>Nama Jabatan</th>
+                                <th>Nama User</th>
+                                <th>Asal Satker</th>
+                                <th>Jabatan</th>
+                                <th>NIP</th>
+                                <th>Status Role</th>
+                                <th>Alamat Email</th>
+                                <th>Username</th>
+                                <th>No. Handphone</th>
                                 <th>Tgl Dibuat</th>
                                 <th>Aksi</th>
                             </tr>
@@ -39,34 +49,7 @@
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="storePositionModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="storePositionModalLabel">Tambah Jabatan</h5>
-            </div>
-            <form id="storePosition" method="POST" action="{{ route('master_position.store') }}">
-                @csrf
-                <input name="id" type="hidden" id="id" value="">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="name">Nama Jabatan<span class="text-warning">*</span></label>
-                        <input name="name" type="text" id="name" class="form-control" placeholder="Nama Jabatan"
-                            autocomplete="off" required>
-                        <span id="name-error" class="invalid-feedback" role="alert">
-                        </span>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>
-                        Simpan</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="trashPositionModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="trashUserModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -74,12 +57,19 @@
             </div>
             <div class="modal-body">
                 <div class="table-responsive">
-                    <table id="dataTrashPosition" class="table table-bordered table-striped" style="width:100%">
+                    <table id="dataTrashUser" class="table table-bordered table-striped" style="width:100%">
                         <thead>
                             <tr>
                                 <th style="width: 1%">#</th>
-                                <th>Nama Jabatan</th>
-                                <th>Tgl Hapus</th>
+                                <th>Nama User</th>
+                                <th>Asal Satker</th>
+                                <th>Jabatan</th>
+                                <th>NIP</th>
+                                <th>Status Role</th>
+                                <th>Alamat Email</th>
+                                <th>Username</th>
+                                <th>No. Handphone</th>
+                                <th>Tgl. Nonaktif</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -99,36 +89,7 @@
 <script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script type="text/javascript">
-    function updatePositionModalButton(id) {
-        $('#storePosition').trigger('reset');
-        $('#storePosition').attr('action', '{{ route('master_position.update') }}');
-        $('#storePosition').attr('method', 'PUT');
-        $('#storePositionModalLabel').text('Edit Jabatan');
-        $.ajax({
-            url: '{{ route('master_position.get') }}',
-            data: {id:id},
-            type: 'GET',
-            success: function (res) {
-                Object.keys(res).forEach(key => {
-                    $('#storePosition').find(`input[name='${key}']`).val(res[key]);
-                });
-                $('#storePositionModal').modal('toggle');
-            },
-            error: function (response) {
-                Swal.fire('Gagal Mengambil Data', response.responseJSON.errors, 'error');
-            }
-        });
-    }
-
-    $('#storePositionModalButton').click(function(){
-        $('#storePositionModalLabel').text('Tambah Jabatan');
-        $('#storePosition').attr('method', 'POST');
-        $('#storePosition').attr('action', '{{ route('master_position.store') }}');
-        $('#storePosition').trigger('reset');
-    });
-</script>
-<script type="text/javascript">
-    function deleteItemPosition(id) {
+    function deleteItemUser(id) {
             Swal.fire({
                 title: 'Yakin Hapus?',
                 text: 'Data yang berkaitan dengan jabatan (user, dll) juga akan terhapus.',
@@ -140,14 +101,14 @@
             }).then((result) => {
                 if(result.isConfirmed) {
                     $.ajax({
-                        url: '{{ route('master_position.destroy') }}',
+                        url: '{{ route('moderator.user_list.delete') }}',
                         data: {id:id},
                         type: 'DELETE',
                         success: function (res) {
                             Swal.fire('Berhasil', res.message, 'success');
-                            $('#dataPosition').DataTable().ajax.reload();
-                            if ($.fn.DataTable.isDataTable( '#dataTrashPosition' )) {
-                                $('#dataTrashPosition').DataTable().ajax.reload();
+                            $('#dataUser').DataTable().ajax.reload();
+                            if ($.fn.DataTable.isDataTable( '#dataTrashUser' )) {
+                                $('#dataTrashUser').DataTable().ajax.reload();
                             }
                         },
                         error: function (response) {
@@ -158,7 +119,7 @@
             });
         }
 
-        function restoreItemPosition(id) {
+        function restoreItemUser(id) {
             Swal.fire({
                 title: 'Yakin Restore Data?',
                 text: 'Data akan dikembalikan lagi.',
@@ -170,13 +131,13 @@
             }).then((result) => {
                 if(result.isConfirmed) {
                     $.ajax({
-                        url: '{{ route('master_position.restore') }}',
+                        url: '{{ route('moderator.user_list.restore') }}',
                         data: {id:id},
                         type: 'PUT',
                         success: function (res) {
                             Swal.fire('Berhasil', res.message, 'success');
-                            $('#dataPosition').DataTable().ajax.reload();
-                            $('#dataTrashPosition').DataTable().ajax.reload();
+                            $('#dataUser').DataTable().ajax.reload();
+                            $('#dataTrashUser').DataTable().ajax.reload();
                         },
                         error: function (response) {
                             Swal.fire('Gagal Restore', JSON.stringify(response.responseJSON.errors), 'error');
@@ -186,7 +147,7 @@
             });
         }
 
-        function deletePermanentItemPosition(id) {
+        function deletePermanentItemUser(id) {
             Swal.fire({
                 title: 'Yakin Hapus Permanent?',
                 text: 'Data yang berkaitan dengan jabatan (user, dll) juga akan terhapus secara permanen.',
@@ -198,12 +159,12 @@
             }).then((result) => {
                 if(result.isConfirmed) {
                     $.ajax({
-                        url: '{{ route('master_position.destroy_permanent') }}',
+                        url: '{{ route('moderator.user_list.destroy') }}',
                         data: {id:id},
                         type: 'DELETE',
                         success: function (res) {
                             Swal.fire('Berhasil', res.message, 'success');
-                            $('#dataTrashPosition').DataTable().ajax.reload();
+                            $('#dataTrashUser').DataTable().ajax.reload();
                         },
                         error: function (response) {
                             Swal.fire('Gagal Hapus', JSON.stringify(response.responseJSON.errors), 'error');
@@ -214,42 +175,10 @@
         }
 </script>
 <script type="text/javascript">
-    $(function(){
-          $('#storePosition').submit(function(e){
-            e.preventDefault();
-            $.ajax({
-              url: $(this).attr('action'),
-              data: $(this).serialize(),
-              type: $(this).attr('method'),
-              beforeSend: function() {
-                $('#storePosition :input').attr('disabled',true).removeClass('is-invalid');
-                $('#storePosition').find('.invalid-feedback').text('');
-              },
-              complete: function() {
-                $('#storePosition :input').attr('disabled',false);
-              },
-              success:function(res) {
-                Swal.fire('Berhasil', res.message, 'success');
-                $('#storePosition').trigger('reset');
-                $('#dataPosition').DataTable().ajax.reload();
-                $('#storePositionModal').modal('toggle');
-              },
-              error: function(response) {
-                Object.keys(response.responseJSON.errors).forEach(key => {
-                    $(`input[name='${key}']`).addClass('is-invalid');
-                    $(`#${key}-error`).text(response.responseJSON.errors[key]);
-                });
-              }
-            })
-            return false;
-          });
-        });
-</script>
-<script type="text/javascript">
     $(function () {
-        $('#trashPositionModalButton').click(function(){
-            if ( ! $.fn.DataTable.isDataTable( '#dataTrashPosition' ) ) {
-                $('#dataTrashPosition').DataTable({
+        $('#trashUserModalButton').click(function(){
+            if ( ! $.fn.DataTable.isDataTable( '#dataTrashUser' ) ) {
+                $('#dataTrashUser').DataTable({
                     responsive: true,
                     processing: true,
                     serverSide: true,
@@ -257,7 +186,7 @@
                     deferRender: true,
                     order: [[ 1, 'asc' ]],
                     ajax: {
-                        url: '{{ route('datatable_trash_position') }}', 
+                        url: '{{ route('moderator.user_list.datatable_trash') }}', 
                         type: 'POST'
                     },
                     columns: [
@@ -266,14 +195,21 @@
                             },
                             orderable: false
                         },
-                        { data: 'name' },
+                        { data: 'name', orderable: false},
+                        { data: 'workunit.name', orderable: false},
+                        { data: 'position.name', orderable: false},
+                        { data: 'nip' },
+                        { data: 'role' },
+                        { data: 'email' },
+                        { data: 'username' },
+                        { data: 'handphone' },
                         { data: 'deleted_at' },
                         { data: 'id',
                             render: function ( data, type, row ) { // Tampilkan kolom aksi
                                 var html = `<div class="text-nowrap">
-                                    <button class="btn badge badge-sm badge-success" onclick="restoreItemPosition(${data})" data-toggle="tooltip" data-placement="top" title="Restore"><i
+                                    <button class="btn badge badge-sm badge-success" onclick="restoreItemUser(${data})" data-toggle="tooltip" data-placement="top" title="Restore"><i
                                     class="fas fa-reply"></i></button>
-                                    <button class="btn badge badge-sm badge-danger" onclick="deletePermanentItemPosition(${data})" data-toggle="tooltip" data-placement="top" title="Hapus Permanen"><i class="fas fa-trash"></i></button>
+                                    <button class="btn badge badge-sm badge-danger" onclick="deletePermanentItemUser(${data})" data-toggle="tooltip" data-placement="top" title="Hapus Permanen"><i class="fas fa-trash"></i></button>
                                     </div>`;
                                 return html;
                             }, 
@@ -290,7 +226,7 @@
 </script>
 <script type="text/javascript">
     $(function () {
-        $('#dataPosition').DataTable({
+        $('#dataUser').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
@@ -298,7 +234,7 @@
             deferRender: true,
             order: [[ 1, 'asc' ]],
             ajax: {
-                url: '{{ route('datatable_position') }}', 
+                url: '{{ route('moderator.user_list.datatable') }}', 
                 type: 'POST'
             },
             columns: [
@@ -308,12 +244,17 @@
                     orderable: false
                 },
                 { data: 'name' },
+                { data: 'workunit.name', orderable: false},
+                { data: 'position.name', orderable: false},
+                { data: 'nip' },
+                { data: 'role' },
+                { data: 'email' },
+                { data: 'username' },
+                { data: 'handphone' },
                 { data: 'created_at' },
                 { data: 'id',
                     render: function ( data, type, row ) { // Tampilkan kolom aksi
-                        var html = `<div class="text-nowrap">
-                            <button class="btn badge badge-sm badge-warning" onclick="updatePositionModalButton(${data})"><i class="fas fa-edit"></i></button>
-                            <button class="btn badge badge-sm badge-danger" onclick="deleteItemPosition(${data})"><i class="fas fa-trash"></i></button>
+                        var html = `<button class="btn badge badge-sm badge-danger" onclick="deleteItemUser(${data})"><i class="fas fa-trash"></i></button>
                             </div>`;
                         return html;
                     }, 

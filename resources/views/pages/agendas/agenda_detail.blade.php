@@ -9,7 +9,7 @@
          <div class="card-body">
             <div class="post">
                <div class="user-block">
-                  <img class="img-circle" src="{{ asset('assets/img/agenda.png')  }}" alt="{{ $agenda->title }}" />
+                  <img class="img-circle" src="{{ asset('assets/img/agenda.jpg')  }}" alt="{{ $agenda->title }}" />
                   <span class="username">
                      <h5 class="text-dark font-weight-bold">{{ $agenda->title }}</h5>
                   </span>

@@ -9,7 +9,7 @@
    <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
          <a class="nav-link" data-toggle="dropdown" href="#">
-            <img height="20" src="{{ asset('assets/img/user.png') }}" class="img img-circle " alt="">
+            <img height="20" src="{{ asset('assets/img/user.jpg') }}" class="img img-circle " alt="">
          </a>
          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right shadow">
             <a href="{{ route('home') }}" class="dropdown-item text-truncate">
@@ -21,7 +21,7 @@
                   {{ Auth::user()->position->name }}
                </small>
             </a>
-            <a href="https://sikka.bempknstan.org/profil/pengaturan" class="dropdown-item dropdown-footer text-left">
+            <a href="{{ route('profile_settings') }}" class="dropdown-item dropdown-footer text-left">
                <i class="fas fa-cog mr-2"></i>Pengaturan Akun</a>
             <form action="{{ route('logout') }}" method="POST">
                @csrf

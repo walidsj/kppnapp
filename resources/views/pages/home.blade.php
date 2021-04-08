@@ -31,7 +31,7 @@
                     @forelse($monthly_agendas as $agenda)
                     <li class="item mx-3">
                         <div class="product-img">
-                            <img src="{{ asset('assets/img/agenda.png') }}" alt="{{ $agenda->title }}"
+                            <img src="{{ asset('assets/img/agenda.jpg') }}" alt="{{ $agenda->title }}"
                                 class="img-size-50 img-circle">
                         </div>
                         <div class="product-info">
@@ -102,6 +102,7 @@
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek'
             },
+            contentHeight: 'auto',
             themeSystem: 'bootstrap',
             locale: 'id',
             events: '{{ route('agenda.get') }}', 

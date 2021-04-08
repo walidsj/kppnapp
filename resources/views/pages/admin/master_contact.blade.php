@@ -52,6 +52,13 @@
                 <input name="id" type="hidden" id="id" value="">
                 <div class="modal-body">
                     <div class="form-group">
+                        <div class="alert alert-warning" role="alert">
+                            <i class="fas fa-exclamation-triangle"></i> Pastikan No. Handphone aktif sebagai akun
+                            WhatsApp karena akan tergenerate menjadi
+                            tautan chat WhatsApp.
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="name">Nama Kontak<span class="text-warning">*</span></label>
                         <input name="name" type="text" id="name" class="form-control" placeholder="Nama Kontak"
                             autocomplete="off" required>

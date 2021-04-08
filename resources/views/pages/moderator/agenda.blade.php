@@ -6,158 +6,158 @@
 <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
 <link rel="stylesheet"
-   href="{{ asset('assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    href="{{ asset('assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
 @endsection
 
 @section('content')
 <div class="row">
-   <div class="col-lg-10">
-      <div class="card shadow-sm mb-3">
-         <div class="card-body">
-            <button id="storeModeratorAgendaModalButton" type="button" class="btn btn-primary" data-toggle="modal"
-               data-target="#storeModeratorAgendaModal">
-               <i class="fas fa-plus-circle"></i> Tambah Kegiatan
-            </button>
-            <button id="trashModeratorAgendaModalButton" type="button" class="btn btn-danger float-right"
-               data-toggle="modal" data-target="#trashModeratorAgendaModal">
-               <i class="fas fa-trash"></i> Trash
-            </button>
-         </div>
-         <div class="card-body">
-            <div class="table-responsive">
-               <table id="dataModeratorAgenda" class="table table-bordered table-striped" style="width:100%">
-                  <thead>
-                     <tr>
-                        <th style="width: 1%">#</th>
-                        <th>Kegiatan</th>
-                        <th>Deskripsi</th>
-                        <th>Tgl. Mulai</th>
-                        <th>Tgl. Selesai</th>
-                        <th>Sifat</th>
-                        <th>Tautan</th>
-                        <th>Lampiran</th>
-                        <th>PIC Mod.</th>
-                        <th>Aksi</th>
-                     </tr>
-                  </thead>
-               </table>
+    <div class="col">
+        <div class="card shadow-sm mb-3">
+            <div class="card-body">
+                <button id="storeModeratorAgendaModalButton" type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#storeModeratorAgendaModal">
+                    <i class="fas fa-plus-circle"></i> Tambah Kegiatan
+                </button>
+                <button id="trashModeratorAgendaModalButton" type="button" class="btn btn-danger float-right"
+                    data-toggle="modal" data-target="#trashModeratorAgendaModal">
+                    <i class="fas fa-trash"></i> Trash
+                </button>
             </div>
-         </div>
-      </div>
-   </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="dataModeratorAgenda" class="table table-bordered table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th style="width: 1%">#</th>
+                                <th>Kegiatan</th>
+                                <th>Deskripsi</th>
+                                <th>Tgl. Mulai</th>
+                                <th>Tgl. Selesai</th>
+                                <th>Sifat</th>
+                                <th>Tautan</th>
+                                <th>Lampiran</th>
+                                <th>PIC Mod.</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="storeModeratorAgendaModal" tabindex="-1" aria-hidden="true">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h5 class="modal-title" id="storeModeratorAgendaModalLabel">Tambah Kegiatan</h5>
-         </div>
-         <form id="storeModeratorAgenda" method="POST" action="{{ route('moderator.agenda.store') }}">
-            @csrf
-            <input name="id" type="hidden" id="id" value="">
-            <div class="modal-body">
-               <div class="form-group">
-                  <label for="title">Nama Kegiatan<span class="text-warning">*</span></label>
-                  <input name="title" type="text" id="title" class="form-control" placeholder="Judul Kegiatan"
-                     autocomplete="off" required>
-                  <span id="title-error" class="invalid-feedback" role="alert">
-                  </span>
-               </div>
-               <div class="form-group">
-                  <label for="description">Deskripsi<span class="text-warning">*</span></label>
-                  <textarea name="description" type="text" id="description" class="form-control" placeholder="Deskripsi"
-                     rows="4" autocomplete="off" required></textarea>
-                  <span id="description-error" class="invalid-feedback" role="alert">
-                  </span>
-               </div>
-               <div class="form-group">
-                  <label for="start">Tgl. Mulai<span class="text-warning">*</span></label>
-                  {{-- <input name="start" type="text" id="start" class="form-control" placeholder="Tgl. Mulai"
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="storeModeratorAgendaModalLabel">Tambah Kegiatan</h5>
+            </div>
+            <form id="storeModeratorAgenda" method="POST" action="{{ route('moderator.agenda.store') }}">
+                @csrf
+                <input name="id" type="hidden" id="id" value="">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="title">Nama Kegiatan<span class="text-warning">*</span></label>
+                        <input name="title" type="text" id="title" class="form-control" placeholder="Judul Kegiatan"
+                            autocomplete="off" required>
+                        <span id="title-error" class="invalid-feedback" role="alert">
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Deskripsi<span class="text-warning">*</span></label>
+                        <textarea name="description" type="text" id="description" class="form-control"
+                            placeholder="Deskripsi" rows="4" autocomplete="off" required></textarea>
+                        <span id="description-error" class="invalid-feedback" role="alert">
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="start">Tgl. Mulai<span class="text-warning">*</span></label>
+                        {{-- <input name="start" type="text" id="start" class="form-control" placeholder="Tgl. Mulai"
                      autocomplete="off" required> --}}
-                  <input name="start" type="text" class="form-control datetimepicker-input" id="start"
-                     data-toggle="datetimepicker" data-target="#start" placeholder="Tgl. Mulai" />
-                  <span id="start-error" class="invalid-feedback" role="alert">
-                  </span>
-               </div>
-               <div class="form-group">
-                  <label for="end">Tgl. Selesai<span class="text-warning">*</span></label>
-                  {{-- <input name="end" type="text" id="end" class="form-control" placeholder="Tgl. Selesai"
+                        <input name="start" type="text" class="form-control datetimepicker-input" id="start"
+                            data-toggle="datetimepicker" data-target="#start" placeholder="Tgl. Mulai" />
+                        <span id="start-error" class="invalid-feedback" role="alert">
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="end">Tgl. Selesai<span class="text-warning">*</span></label>
+                        {{-- <input name="end" type="text" id="end" class="form-control" placeholder="Tgl. Selesai"
                      autocomplete="off" required> --}}
-                  <input name="end" type="text" class="form-control datetimepicker-input" id="end"
-                     data-toggle="datetimepicker" data-target="#end" placeholder="Tgl. Selesai" />
-                  <span id="end-error" class="invalid-feedback" role="alert">
-                  </span>
-               </div>
-               <div class="form-group">
-                  <label for="link">Tautan</label>
-                  <textarea name="link" type="text" id="link" class="form-control" placeholder="Tautan" rows="2"
-                     autocomplete="off"></textarea>
-                  <span id="link-error" class="invalid-feedback" role="alert">
-                  </span>
-               </div>
-               {{-- <div class="form-group">
+                        <input name="end" type="text" class="form-control datetimepicker-input" id="end"
+                            data-toggle="datetimepicker" data-target="#end" placeholder="Tgl. Selesai" />
+                        <span id="end-error" class="invalid-feedback" role="alert">
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="link">Tautan</label>
+                        <textarea name="link" type="text" id="link" class="form-control" placeholder="Tautan" rows="2"
+                            autocomplete="off"></textarea>
+                        <span id="link-error" class="invalid-feedback" role="alert">
+                        </span>
+                    </div>
+                    {{-- <div class="form-group">
                   <label for="workunit_id">Satker</label>
                   <select id="workunit_id" name="workunit_id[]" class="select2 form-control" multiple="multiple"
                      style="width: 100%;"></select>
                   <span id="workunit_id-error" class="invalid-feedback" role="alert">
                   </span>
                </div> --}}
-               <div class="form-group">
-                  <label for="attachment">Lampiran</label>
-                  <textarea name="attachment" type="text" id="attachment" class="form-control" placeholder="Lampiran"
-                     rows="2" autocomplete="off"></textarea>
-                  <span id="attachment-error" class="invalid-feedback" role="alert">
-                  </span>
-               </div>
-               <div class="form-group">
-                  <label for="status_agenda_id">Sifat<span class="text-warning">*</span></label>
-                  <select name="status_agenda_id" class="select2 form-control" id="status_agenda_id"
-                     style="width: 100%;" autocomplete="off" required></select>
-                  <span id="status_agenda_id-error" class="invalid-feedback" role="alert">
-                  </span>
-               </div>
-            </div>
-            <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-               <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>
-                  Simpan</button>
-            </div>
-         </form>
-      </div>
-   </div>
+                    <div class="form-group">
+                        <label for="attachment">Lampiran</label>
+                        <textarea name="attachment" type="text" id="attachment" class="form-control"
+                            placeholder="Lampiran" rows="2" autocomplete="off"></textarea>
+                        <span id="attachment-error" class="invalid-feedback" role="alert">
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="status_agenda_id">Sifat<span class="text-warning">*</span></label>
+                        <select name="status_agenda_id" class="select2 form-control" id="status_agenda_id"
+                            style="width: 100%;" autocomplete="off" required></select>
+                        <span id="status_agenda_id-error" class="invalid-feedback" role="alert">
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>
+                        Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 <div class="modal fade" id="trashModeratorAgendaModal" tabindex="-1" aria-hidden="true">
-   <div class="modal-dialog modal-xl">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h5 class="modal-title">Tempat Sampah</h5>
-         </div>
-         <div class="modal-body">
-            <div class="table-responsive">
-               <table id="dataTrashModeratorAgenda" class="table table-bordered table-striped" style="width:100%">
-                  <thead>
-                     <tr>
-                        <th style="width: 1%">#</th>
-                        <th>Kegiatan</th>
-                        <th>Deskripsi</th>
-                        <th>Tgl. Mulai</th>
-                        <th>Tgl. Selesai</th>
-                        <th>Sifat</th>
-                        <th>Tautan</th>
-                        <th>Lampiran</th>
-                        <th>PIC Mod.</th>
-                        <th>Aksi</th>
-                     </tr>
-                  </thead>
-               </table>
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tempat Sampah</h5>
             </div>
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-         </div>
-      </div>
-   </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table id="dataTrashModeratorAgenda" class="table table-bordered table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th style="width: 1%">#</th>
+                                <th>Kegiatan</th>
+                                <th>Deskripsi</th>
+                                <th>Tgl. Mulai</th>
+                                <th>Tgl. Selesai</th>
+                                <th>Sifat</th>
+                                <th>Tautan</th>
+                                <th>Lampiran</th>
+                                <th>PIC Mod.</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 
@@ -168,7 +168,7 @@
 <script src="{{ asset('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script type="text/javascript">
-   function updateModeratorAgendaModalButton(id) {
+    function updateModeratorAgendaModalButton(id) {
         $('#storeModeratorAgenda').trigger('reset');
         $('#storeModeratorAgenda').attr('action', '{{ route('moderator.agenda.update') }}');
         $('#storeModeratorAgenda').attr('method', 'PUT');
@@ -201,7 +201,7 @@
     });
 </script>
 <script type="text/javascript">
-   function deleteItemModeratorAgenda(id) {
+    function deleteItemModeratorAgenda(id) {
             Swal.fire({
                 title: 'Yakin Hapus?',
                 text: 'Data kegiatan akan terhapus.',
@@ -287,7 +287,7 @@
         }
 </script>
 <script type="text/javascript">
-   $(function(){
+    $(function(){
           $('#storeModeratorAgenda').submit(function(e){
             e.preventDefault();
             $.ajax({
@@ -320,7 +320,7 @@
         });
 </script>
 <script type="text/javascript">
-   $(function () {
+    $(function () {
         $('#trashModeratorAgendaModalButton').click(function(){
             if ( ! $.fn.DataTable.isDataTable( '#dataTrashModeratorAgenda' ) ) {
                 $('#dataTrashModeratorAgenda').DataTable({
@@ -369,7 +369,7 @@
     });
 </script>
 <script type="text/javascript">
-   $(function () {
+    $(function () {
         $('#dataModeratorAgenda').DataTable({
             responsive: true,
             processing: true,
@@ -413,23 +413,43 @@
     });
 </script>
 <script type="text/javascript">
-   $(function(){
+    $(function(){
       $('#start').datetimepicker({
          format: 'YYYY-MM-DD HH:mm:ss',
-         buttons: 
-         {
+         buttons: {
             showToday: true,
             showClear: true,
             showClose: true
+         },
+         icons: { 
+            time: 'fas fa-clock',
+            date: 'fas fa-calendar',
+            up: 'fas fa-arrow-up',
+            down: 'fas fa-arrow-down',
+            previous: 'fas fa-arrow-circle-left',
+            next: 'fas fa-arrow-circle-right',
+            today: 'fas fa-calendar-check-o',
+            clear: 'fas fa-trash',
+            close: 'fas fa-times' 
          }
       });
       $('#end').datetimepicker({
          format: 'YYYY-MM-DD HH:mm:ss',
-         buttons:
-         {
+         buttons: {
             showToday: true,
             showClear: true,
             showClose: true
+         },
+         icons: { 
+            time: 'fas fa-clock',
+            date: 'fas fa-calendar',
+            up: 'fas fa-arrow-up',
+            down: 'fas fa-arrow-down',
+            previous: 'fas fa-arrow-circle-left',
+            next: 'fas fa-arrow-circle-right',
+            today: 'fas fa-calendar-check-o',
+            clear: 'fas fa-trash',
+            close: 'fas fa-times' 
          }
       });
       $('#status_agenda_id').select2({

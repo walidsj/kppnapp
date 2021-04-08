@@ -1,5 +1,5 @@
 <aside class="main-sidebar sidebar-light-primary shadow-sm"> <a class="brand-link"> <img
-         src="{{ asset('assets/img/logo-siwanda.png') }}" alt="SIKKA BEM" class="brand-image"> <span
+         src="{{ asset('assets/img/logo.png') }}" alt="SIKKA BEM" class="brand-image"> <span
          class="brand-text font-weight-bolder">{{ config('app.name', 'Laravel') }}</span> </a>
    <div class="sidebar">
       <nav class="mt-3 pb-5">
@@ -43,6 +43,13 @@
                   class="nav-link @if(request()->routeIs('moderator.agenda')) active @endif">
                   <i class="nav-icon fas fa-briefcase"></i>
                   <p>Administrasi Kegiatan</p>
+               </a>
+            </li>
+            <li class="nav-item">
+               <a href="{{ route('moderator.user_list') }}"
+                  class="nav-link @if(request()->routeIs('moderator.user_list')) active @endif">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>Daftar User</p>
                </a>
             </li>
             {{--

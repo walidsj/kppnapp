@@ -8,8 +8,7 @@
 <div class="card-body login-card-body">
     <div class="form-group text-center">
         <a href="{{ route('home') }}">
-            <img class="img" alt="Aplikasi KPPN Purwodadi" height="48"
-                src="{{ asset('assets/img/logo-siwanda-2.png') }}">
+            <img class="img" alt="Aplikasi KPPN Purwodadi" height="48" src="{{ asset('assets/img/logo-full.jpg') }}">
         </a>
     </div>
     <div class="login-box-msg">

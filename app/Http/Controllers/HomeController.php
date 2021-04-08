@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Agenda;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -32,5 +34,29 @@ class HomeController extends Controller
         })->get();
 
         return view('pages.home', compact('monthly_agendas'));
+    }
+
+    public function profile_settings_index()
+    {
+        return view('pages.profile_settings');
+    }
+
+    public function profile_settings_password_update(Request $request)
+    {
+        $this->validate($request, [
+            'old_password' => 'required|max:255',
+            'password' => 'required|confirmed|min:8|max:255',
+        ]);
+
+        $password_hash = Auth::user()->password;
+        if (Hash::check($request->old_password, $password_hash)) {
+            $user = User::find(intval(Auth::user()->id));
+            $user->password = Hash::make($request->password);
+            if ($user->save()) {
+                return redirect(route('profile_settings'))->with('status', 'Profile updated!');
+            }
+        } else {
+            return redirect(route('profile_settings'))->with('error', 'Password lama salah.');
+        }
     }
 }

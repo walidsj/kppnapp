@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    return redirect('/home');
 });
 
 Auth::routes(['verify' => true]);
@@ -30,6 +31,9 @@ Route::middleware(['auth', 'verified'])->group(
 
         Route::get('/agenda/{slug}', 'AgendaController@detail')->name('agenda_detail');
         Route::get('/contact-us', 'InfoController@user_contact_index')->name('contact');
+
+        Route::get('/profile-settings', 'HomeController@profile_settings_index')->name('profile_settings');
+        Route::post('/profile-settings/password-update', 'HomeController@profile_settings_password_update')->name('profile_settings.password.update');
         # END ROUTE USER ----------------------------------------------------
 
         #--------------------------------------------------------------------
@@ -37,6 +41,21 @@ Route::middleware(['auth', 'verified'])->group(
         #--------------------------------------------------------------------
         Route::middleware(['auth.moderator'])->group(
             function () {
+                # MASTER DATA POSITION/JABATAN -------------------------------
+                Route::get('/user-list', 'UserController@index')->name('moderator.user_list');
+
+                Route::get('/user-list/get', 'UserController@get')->name('moderator.user_list.get');
+                Route::post('/user-list/store', 'UserController@store')->name('moderator.user_list.store');
+                Route::put('/user-list/update', 'UserController@update')->name('moderator.user_list.update');
+                Route::delete('/user-list/delete', 'UserController@destroy')->name('moderator.user_list.delete');
+
+                Route::delete('/user-list/destroy', 'UserController@destroy_permanent')->name('moderator.user_list.destroy');
+                Route::put('/user-list/restore', 'UserController@restore')->name('moderator.user_list.restore');
+
+                Route::post('/user-list/data', 'UserController@datatable')->name('moderator.user_list.datatable');
+                Route::post('/user-list/data/trash', 'UserController@datatable_trash')->name('moderator.user_list.datatable_trash');
+                #-------------------------------- jangan diutik-utik plis ----
+
                 Route::get('/moderator/agenda', 'AgendaController@moderator_agenda_index')->name('moderator.agenda');
                 Route::get('/moderator/agenda/get', 'AgendaController@moderator_agenda_get')->name('moderator.agenda.get');
                 Route::post('/moderator/agenda/store', 'AgendaController@moderator_agenda_store')->name('moderator.agenda.store');
