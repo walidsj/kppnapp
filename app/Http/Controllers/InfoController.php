@@ -51,6 +51,8 @@ class InfoController extends Controller
 
         $contact = new Contact();
         $contact->name = $request->name;
+        $contact->position = $request->position;
+        $contact->handphone = $request->handphone;
         if ($contact->save()) {
             return response()->json(['message' => 'Item "' . $contact->name . '" berhasil ditambahkan.'], 200);
         }
@@ -68,6 +70,8 @@ class InfoController extends Controller
 
         $contact = Contact::find(intval($request->id));
         $contact->name = $request->name;
+        $contact->position = $request->position;
+        $contact->handphone = $request->handphone;
         if ($contact->save()) {
             return response()->json(['message' => 'Item berhasil diubah menjadi "' . $contact->name . '".'], 200);
         }

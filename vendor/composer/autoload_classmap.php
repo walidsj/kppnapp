@@ -24,6 +24,7 @@ return array(
     'App\\Http\\Controllers\\PositionController' => $baseDir . '/app/Http/Controllers/PositionController.php',
     'App\\Http\\Controllers\\StatusAgendaController' => $baseDir . '/app/Http/Controllers/StatusAgendaController.php',
     'App\\Http\\Controllers\\UpcomingAgendaController' => $baseDir . '/app/Http/Controllers/UpcomingAgendaController.php',
+    'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
     'App\\Http\\Controllers\\WorkunitController' => $baseDir . '/app/Http/Controllers/WorkunitController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\AdminMiddleware' => $baseDir . '/app/Http/Middleware/AdminMiddleware.php',

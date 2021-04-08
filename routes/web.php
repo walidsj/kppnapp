@@ -30,6 +30,9 @@ Route::middleware(['auth', 'verified'])->group(
         Route::get('/data/agenda', 'AgendaController@get')->name('agenda.get');
 
         Route::get('/agenda/{slug}', 'AgendaController@detail')->name('agenda_detail');
+        Route::get('/agenda/present/{slug}', 'AgendaController@present_index')->name('agenda_detail.present');
+        Route::post('/agenda/send-present', 'AgendaController@present_store')->name('agenda_detail.present.store');
+
         Route::get('/contact-us', 'InfoController@user_contact_index')->name('contact');
 
         Route::get('/profile-settings', 'HomeController@profile_settings_index')->name('profile_settings');

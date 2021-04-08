@@ -12,7 +12,7 @@ class Agenda extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'title', 'description', 'user_id', 'open_gate_date', 'start_date', 'end_date', 'image', 'link', 'attachment', 'status_agenda_id'
+        'title', 'description', 'user_id', 'start', 'end', 'link', 'attachment', 'status_agenda_id'
     ];
 
     public function user()
@@ -24,6 +24,11 @@ class Agenda extends Model
     {
         return $this->belongsTo('App\StatusAgenda');
     }
+
+    // public function present()
+    // {
+    //     return $this->hasMany('App\Present');
+    // }
 
     public function scopeOrdered($query)
     {

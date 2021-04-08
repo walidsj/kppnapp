@@ -43,10 +43,12 @@
                      @endif
                      <a href="{{ route('agenda_detail', ['slug' => $agenda->slug]) }}"><span class="badge badge-info"><i
                               class="far fa-eye"></i> Detail</span></a>
+                     @if($agenda->user_id)
                      <span class="float-right text-success text-md font-weight-bold opacity-3">
                         <i class="fas fa-check-circle"></i>
                         Hadir
                      </span>
+                     @endif
                   </div>
                </li>
                @endforeach

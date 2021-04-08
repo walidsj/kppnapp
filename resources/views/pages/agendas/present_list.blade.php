@@ -1,31 +1,18 @@
 @extends('layouts.panel')
 
-@section('title', 'Detail Kegiatan')
+@section('title', 'Daftar Hadir')
 
 @section('content')
 <div class="row">
-   <div class="col-lg-8">
-      <div class="card shadow-sm mb-3">
-         <div class="card-body">
-            <div class="post">
-               <div class="user-block">
-                  <img class="img-circle" src="{{ asset('assets/img/agenda.jpg')  }}" alt="{{ $agenda->title }}" />
-                  <span class="username">
-                     <h5 class="text-dark font-weight-bold">{{ $agenda->title }}</h5>
-                  </span>
-                  <span class="description">
-                     Diselenggarakan oleh {{ $agenda->user->workunit->name }}
-                  </span>
-               </div>
-               <p>{{ $agenda->description }}</p>
-            </div>
-         </div>
-      </div>
-   </div>
    <div class="col-lg-4">
       <div class="card shadow-sm mb-3">
          <div class="card-body box-profile">
             <ul class="list-group list-group-unbordered mb-3">
+               <li class="list-group-item border-0">
+                  <b>Judul Kegiatan</b>
+                  <br>
+                  {{ $agenda->title }}
+               </li>
                <li class="list-group-item border-0">
                   <b>Kegiatan Mulai</b>
                   <br>
@@ -55,41 +42,50 @@
                   Semua Satuan Kerja
                   @endif
                </li>
-               <li class="list-group-item border-0">
-                  <b>Tautan</b>
-                  <br>
-                  @if($agenda->link)
-                  <a href="{{ $agenda->link }}">
-                     {{ $agenda->link }}
-                  </a>
-                  @else
-                  <span class="text-muted">Tidak ada tautan</span>
-                  @endif
-               </li>
-               <li class="list-group-item border-0">
-                  <b>Lampiran</b>
-                  <br>
-                  @if($agenda->attachment)
-                  <a href="{{ $agenda->attachment }}">
-                     <i class="fas fa-paperclip"></i> Lihat Lampiran
-                  </a>
-                  @else
-                  <span class="text-muted">Tidak ada lampiran</span>
-                  @endif
-               </li>
             </ul>
-            <a href="{{ route('agenda_detail.present', ['slug' => $agenda->slug]) }}"
-               class="btn btn-primary font-weight-bold"><i class="far fa-eye"></i> Daftar Hadir</a>
-
-            @if($present)
-            <div class="d-block pt-3">
-               <i class="text-success fas fa-check-circle"></i> <b>Presensi</b>
-               {{ \Carbon\Carbon::parse($present->created_at)->isoFormat('dddd, D MMMM YYYY HH.mm') }} WIB
+         </div>
+      </div>
+   </div>
+   <div class="col-lg-8">
+      <div class="card shadow-sm mb-3">
+         <div class="card-body">
+            <div class="post">
+               <div class="user-block">
+                  <img class="img-circle" src="{{ asset('assets/img/agenda.jpg')  }}" alt="{{ $agenda->title }}" />
+                  <span class="username">
+                     <h5 class="text-dark font-weight-bold">Data Kehadiran</h5>
+                  </span>
+                  <span class="description">
+                     {{ $agenda->title }}
+                  </span>
+               </div>
+               <div class="table-responsive">
+                  <table class="table table-bordered table-striped">
+                     <thead>
+                        <tr>
+                           <th>#</th>
+                           <th>Nama</th>
+                           <th>Asal Satker</th>
+                           <th>Status</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        @foreach($presents as $present)
+                        <tr>
+                           <td>{{ $loop->iteration }}</td>
+                           <td>{{ $present->user['name'] }}</td>
+                           <td>{{ $present->user['workunit']['name'] }}</td>
+                           <td>
+                              <i class="text-success fas fa-check-circle"></i> HADIR
+                              <br>
+                              <small>({{ $present->created_at }})</small>
+                           </td>
+                        </tr>
+                        @endforeach
+                     </tbody>
+                  </table>
+               </div>
             </div>
-            @else
-            <button onclick="sendPresent({{ $agenda->id }})" class="btn btn-success font-weight-bold float-right"><i
-                  class="far fa-bookmark"></i> Presensi</button>
-            @endif
          </div>
       </div>
    </div>

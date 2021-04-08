@@ -433,6 +433,7 @@ class ComposerStaticInit2287b5c730b8107289d1eea61d1b3824
         'App\\Http\\Controllers\\PositionController' => __DIR__ . '/../..' . '/app/Http/Controllers/PositionController.php',
         'App\\Http\\Controllers\\StatusAgendaController' => __DIR__ . '/../..' . '/app/Http/Controllers/StatusAgendaController.php',
         'App\\Http\\Controllers\\UpcomingAgendaController' => __DIR__ . '/../..' . '/app/Http/Controllers/UpcomingAgendaController.php',
+        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Controllers\\WorkunitController' => __DIR__ . '/../..' . '/app/Http/Controllers/WorkunitController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\AdminMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminMiddleware.php',

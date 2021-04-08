@@ -50,12 +50,14 @@ class WorkunitController extends Controller
         $this->validate($request, [
             'id' => 'required',
             'name' => 'required|min:3|max:255',
-            'code' => 'required|min:3|max:255|unique:workunits',
+            'code' => 'required|min:3|max:255|unique:workunits,code,' . $request->id,
             'baes1' => 'required|min:3|max:255',
         ]);
 
         $workunit = Workunit::find(intval($request->id));
-        $workunit->name = $request->name;
+        $workunit->name = strtoupper($request->name);
+        $workunit->code = $request->code;
+        $workunit->baes1 = $request->baes1;
         if ($workunit->save()) {
             return response()->json(['message' => 'Item berhasil diubah menjadi "' . $workunit->name . '".'], 200);
         }

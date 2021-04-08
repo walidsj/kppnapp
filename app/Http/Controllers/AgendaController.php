@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Agenda;
+use App\Present;
 use App\Workunit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -14,11 +15,15 @@ class AgendaController extends Controller
     //
     public function index()
     {
-        $agenda_list = Agenda::where('end', '<', Carbon::now())->where(function ($query) {
-            $query->whereNull('workunit_id')->orWhereRaw('FIND_IN_SET("' . Auth::user()->workunit_id . '",workunit_id)');
-        })->orderBy('end', 'desc')->get()->groupBy(function ($date) {
-            return Carbon::parse($date->start)->isoFormat('MMMM YYYY');
-        });
+        $agenda_list = Agenda::leftJoin('presents', function ($join) {
+            $join->on('agendas.id', '=', 'presents.agenda_id')
+                ->where('presents.user_id', '=', Auth::user()->id);
+        })
+            ->where('end', '<', Carbon::now())->where(function ($query) {
+                $query->whereNull('workunit_id')->orWhereRaw('FIND_IN_SET("' . Auth::user()->workunit_id . '",workunit_id)');
+            })->orderBy('end', 'desc')->get()->groupBy(function ($date) {
+                return Carbon::parse($date->start)->isoFormat('MMMM YYYY');
+            });
         return view('pages.agendas.agenda_list', compact('agenda_list'));
     }
 
@@ -26,12 +31,42 @@ class AgendaController extends Controller
     {
         $agenda = Agenda::where('slug', $slug)->firstOrFail();
         $workunits = [];
+        $present = Present::where('agenda_id', $agenda->id)->where('user_id', Auth::user()->id)->first();
 
         if ($agenda->workunit_id) {
             $workunit_id = explode(',', $agenda->workunit_id);
             $workunits = Workunit::whereIn('id', $workunit_id)->get();
         }
-        return view('pages.agendas.agenda_detail', compact('agenda', 'workunits'));
+        return view('pages.agendas.agenda_detail', compact('agenda', 'workunits', 'present'));
+    }
+
+    public function present_index($slug)
+    {
+        $agenda = Agenda::where('slug', $slug)->firstOrFail();
+        $workunits = [];
+        $presents = Present::with('user')->where('agenda_id', $agenda->id)->orderBy('created_at', 'asc')->get();
+
+        if ($agenda->workunit_id) {
+            $workunit_id = explode(',', $agenda->workunit_id);
+            $workunits = Workunit::whereIn('id', $workunit_id)->get();
+        }
+        // dd($presents);
+        return view('pages.agendas.present_list', compact('agenda', 'workunits', 'presents'));
+    }
+
+    public function present_store(Request $request)
+    {
+        $this->validate($request, [
+            'agenda_id' => 'required',
+        ]);
+
+        $position = new Present();
+        $position->agenda_id = $request->agenda_id;
+        $position->user_id = Auth::user()->id;
+        if ($position->save()) {
+            return response()->json(['message' => 'Anda telah dicatat hadir dalam kegiatan ini.'], 200);
+        }
+        return response()->json();
     }
 
     public function get_api_detail($id)
