@@ -18,13 +18,53 @@
         </div>
     </div>
     @endif
-    <div class="col-md-8">
+    <div class="col-md-6">
         <div class="card shadow-sm mb-3">
-            <div class="card-header">
-                <h3 class="card-title">Profil Saya</h3>
+            <div class="card-header px-0">
+                <div class="px-2 py-3">
+                    <div class="img rounded pb-2 text-center">
+                        <img class="img shadow-sm rounded-circle" src="{{ asset('assets/img/user.jpg') }}"
+                            alt="User Avatar" width="84">
+                    </div>
+                    <div class="text-center">
+                        <h4 class="font-weight-bolder">{{ Auth::user()->name }}</h4>
+                        <h6>NIP. {{ Auth::user()->nip }}</h6>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-
+            <div class="card-body py-0">
+                <ul class="list-group list-group-unbordered mb-3">
+                    <li class="list-group-item border-0">
+                        <b>Username</b>
+                        <br>
+                        {{ Auth::user()->username }}
+                    </li>
+                    <li class="list-group-item border-0">
+                        <b>Alamat Email</b>
+                        <br>
+                        {{ Auth::user()->email }}
+                    </li>
+                    <li class="list-group-item border-0">
+                        <b>Satuan Kerja</b>
+                        <br>
+                        {{ Auth::user()->workunit->name }}
+                    </li>
+                    <li class="list-group-item border-0">
+                        <b>Jabatan</b>
+                        <br>
+                        {{ Auth::user()->position->name }}
+                    </li>
+                    <li class="list-group-item border-0">
+                        <b>No. Handphone</b>
+                        <br>
+                        {{ Auth::user()->handphone }}
+                    </li>
+                    <li class="list-group-item border-0">
+                        <b>Tgl. Daftar</b>
+                        <br>
+                        {{ \Carbon\Carbon::parse(Auth::user()->created_at)->isoFormat('dddd, D MMMM YYYY') }}
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
