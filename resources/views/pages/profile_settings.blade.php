@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body py-0">
+            <div class="card-body">
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item border-0">
                         <b>Username</b>
@@ -65,6 +65,9 @@
                         {{ \Carbon\Carbon::parse(Auth::user()->created_at)->isoFormat('dddd, D MMMM YYYY') }}
                     </li>
                 </ul>
+                <button id="updateProfileModalButton" type="button" class="btn btn-primary">
+                    <i class="fas fa-edit"></i> Edit Profil
+                </button>
             </div>
         </div>
     </div>
@@ -137,4 +140,104 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="updateProfileModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateProfileModalLabel">Edit Profil</h5>
+            </div>
+            <form id="updateProfile" method="PUT" action="{{ route('profile_settings.update') }}">
+                @csrf
+                <input name="id" type="hidden" id="id" value="">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap<span class="text-warning">*</span></label>
+                        <input name="name" type="text" id="name" class="form-control" placeholder="Nama Lengkap"
+                            autocomplete="off" required>
+                        <span id="name-error" class="invalid-feedback" role="alert">
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username<span class="text-warning">*</span></label>
+                        <input name="username" type="text" id="username" class="form-control" placeholder="Username"
+                            autocomplete="off" required>
+                        <span id="username-error" class="invalid-feedback" role="alert">
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label for="handphone">No. Handphone<span class="text-warning">*</span></label>
+                        <input name="handphone" type="text" id="handphone" class="form-control"
+                            placeholder="No. Handphone" autocomplete="off" required>
+                        <span id="handphone-error" class="invalid-feedback" role="alert">
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>
+                        Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+    $('#updateProfileModalButton').click(function() {
+            $('#updateProfile').trigger('reset');
+            $.ajax({
+                url: '{{ route('profile_settings.get') }}',
+                type: 'GET',
+                success: function (res) {
+                    Object.keys(res).forEach(key => {
+                        $('#updateProfile').find(`input[name='${key}']`).val(res[key]);
+                        if($('#updateProfile').find(`textarea[name='${key}']`)) {
+                           $('#updateProfile').find(`textarea[name='${key}']`).text(res[key]);
+                        }
+                    });
+                    $('#updateProfileModal').modal('toggle');
+                },
+                error: function (response) {
+                    Swal.fire('Gagal Mengambil Data', response.responseJSON.errors, 'error');
+                }
+            });
+        });
+</script>
+<script type="text/javascript">
+    $(function(){
+          $('#updateProfile').submit(function(e){
+            e.preventDefault();
+            $.ajax({
+              url: $(this).attr('action'),
+              data: $(this).serialize(),
+              type: $(this).attr('method'),
+              beforeSend: function() {
+                $('#updateProfile :input').attr('disabled',true).removeClass('is-invalid');
+                $('#updateProfile').find('.invalid-feedback').text('');
+              },
+              complete: function() {
+                $('#updateProfile :input').attr('disabled',false);
+              },
+              success:function(res) {
+                Swal.fire('Berhasil', res.message, 'success').then(function(){
+                        location.reload();
+                    }
+                );
+                $('#updateProfile').trigger('reset');
+                $('#updateProfileModal').modal('toggle');
+              },
+              error: function(response) {
+                Object.keys(response.responseJSON.errors).forEach(key => {
+                    $(`input[name='${key}']`).addClass('is-invalid');
+                    $(`#${key}-error`).text(response.responseJSON.errors[key]);
+                });
+              }
+            })
+            return false;
+          });
+        });
+</script>
 @endsection

@@ -41,6 +41,33 @@ class HomeController extends Controller
         return view('pages.profile_settings');
     }
 
+    public function profile_settings_get()
+    {
+        $user = User::where('id',  intval(Auth::user()->id))->first();
+        if ($user) {
+            return response()->json($user, 200);
+        }
+    }
+
+    public function profile_settings_update(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|min:3|max:255',
+            'username' =>
+            'required|min:4|max:18|unique:users,username,' . Auth::user()->id,
+            'handphone' => 'required|min:8|max:16',
+        ]);
+
+        $user = User::find(intval(Auth::user()->id));
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->handphone = $request->handphone;
+        if ($user->save()) {
+            return response()->json(['message' => 'Data Profil berhasil dirubah.'], 200);
+        }
+        return response()->json();
+    }
+
     public function profile_settings_password_update(Request $request)
     {
         $this->validate($request, [

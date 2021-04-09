@@ -37,6 +37,8 @@ Route::middleware(['auth', 'verified'])->group(
 
         Route::get('/profile-settings', 'HomeController@profile_settings_index')->name('profile_settings');
         Route::post('/profile-settings/password-update', 'HomeController@profile_settings_password_update')->name('profile_settings.password.update');
+        Route::put('/profile-settings/update', 'HomeController@profile_settings_update')->name('profile_settings.update');
+        Route::get('/profile-settings/data', 'HomeController@profile_settings_get')->name('profile_settings.get');
         # END ROUTE USER ----------------------------------------------------
 
         #--------------------------------------------------------------------
