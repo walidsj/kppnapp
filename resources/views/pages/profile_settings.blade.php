@@ -20,7 +20,7 @@
     @endif
     <div class="col-md-6">
         <div class="card shadow-sm mb-3">
-            <div class="card-header px-0">
+            <div class="card-header px-0 pb-0">
                 <div class="px-2 py-3">
                     <div class="img rounded pb-2 text-center">
                         <img class="img shadow-sm rounded-circle" src="{{ asset('assets/img/user.jpg') }}"
@@ -47,7 +47,7 @@
                     <li class="list-group-item border-0">
                         <b>Satuan Kerja</b>
                         <br>
-                        {{ Auth::user()->workunit->name }}
+                        {{ Auth::user()->workunit->code }} - {{ Auth::user()->workunit->name }}
                     </li>
                     <li class="list-group-item border-0">
                         <b>Jabatan</b>

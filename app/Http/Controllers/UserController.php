@@ -92,7 +92,11 @@ class UserController extends Controller
             'id' => 'required|not_in:' . Auth::user()->id,
         ]);
 
-        $user = User::whereNotIn('role', ['moderator', 'admin'])->find(intval($request->id));
+        if (Auth::user()->role == 'moderator') {
+            $user = User::whereNotIn('role', ['moderator', 'admin'])->find(intval($request->id));
+        } else {
+            $user = User::whereNotIn('role', ['admin'])->find(intval($request->id));
+        }
         if ($user->delete(intval($request->id))) {
             return response()->json(['message' => 'Item "' . $user->name . '" berhasil dihapus.'], 200);
         }
@@ -105,7 +109,7 @@ class UserController extends Controller
             'id' => 'required',
         ]);
 
-        $user = User::onlyTrashed()->whereNotIn('role', ['moderator', 'admin'])->find(intval($request->id));
+        $user = User::onlyTrashed()->find(intval($request->id));
         if ($user->restore()) {
             return response()->json(['message' => 'Item "' . $user->name . '" berhasil direstore.'], 200);
         }
