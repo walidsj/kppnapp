@@ -19,9 +19,9 @@ class AgendaController extends Controller
             $join->on('agendas.id', '=', 'presents.agenda_id')
                 ->where('presents.user_id', '=', Auth::user()->id);
         })
-            ->where('end', '<', Carbon::now())->where(function ($query) {
+            ->where('start', '<', Carbon::now())->where(function ($query) {
                 $query->whereNull('workunit_id')->orWhereRaw('FIND_IN_SET("' . Auth::user()->workunit_id . '",workunit_id)');
-            })->orderBy('end', 'desc')->get()->groupBy(function ($date) {
+            })->orderBy('start', 'desc')->get()->groupBy(function ($date) {
                 return Carbon::parse($date->start)->isoFormat('MMMM YYYY');
             });
         return view('pages.agendas.agenda_list', compact('agenda_list'));

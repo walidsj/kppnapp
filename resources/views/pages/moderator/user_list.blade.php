@@ -38,7 +38,8 @@
                                 <th>Alamat Email</th>
                                 <th>Username</th>
                                 <th>No. Handphone</th>
-                                <th>Tgl Dibuat</th>
+                                <th>Tgl. Verif Email</th>
+                                <th>Tgl. Dibuat</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -69,6 +70,7 @@
                                 <th>Alamat Email</th>
                                 <th>Username</th>
                                 <th>No. Handphone</th>
+                                <th>Tgl. Verif Email</th>
                                 <th>Tgl. Nonaktif</th>
                                 <th>Aksi</th>
                             </tr>
@@ -203,6 +205,7 @@
                         { data: 'email' },
                         { data: 'username' },
                         { data: 'handphone' },
+                        { data: 'email_verified_at' },
                         { data: 'deleted_at' },
                         { data: 'id',
                             render: function ( data, type, row ) { // Tampilkan kolom aksi
@@ -251,6 +254,7 @@
                 { data: 'email' },
                 { data: 'username' },
                 { data: 'handphone' },
+                { data: 'email_verified_at' },
                 { data: 'created_at' },
                 { data: 'id',
                     render: function ( data, type, row ) { // Tampilkan kolom aksi

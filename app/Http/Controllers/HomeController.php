@@ -29,9 +29,13 @@ class HomeController extends Controller
     public function index()
     {
         $agenda = new Agenda;
-        $monthly_agendas = $agenda->whereMonth('start', '=', Carbon::now())->where(function ($query) {
-            $query->whereNull('workunit_id')->orWhereRaw('FIND_IN_SET("' . Auth::user()->workunit_id . '",workunit_id)');
-        })->get();
+        $monthly_agendas = $agenda->leftJoin('presents', function ($join) {
+            $join->on('agendas.id', '=', 'presents.agenda_id')
+                ->where('presents.user_id', '=', Auth::user()->id);
+        })
+            ->whereMonth('start', '=', Carbon::now())->where(function ($query) {
+                $query->whereNull('workunit_id')->orWhereRaw('FIND_IN_SET("' . Auth::user()->workunit_id . '",workunit_id)');
+            })->orderBy('start', 'asc')->get();
 
         return view('pages.home', compact('monthly_agendas'));
     }
@@ -56,12 +60,14 @@ class HomeController extends Controller
             'username' =>
             'required|min:4|max:18|unique:users,username,' . Auth::user()->id,
             'handphone' => 'required|min:8|max:16',
+            'nip' => 'required|digits:18',
         ]);
 
         $user = User::find(intval(Auth::user()->id));
-        $user->name = $request->name;
+        $user->name = strtoupper($request->name);
         $user->username = $request->username;
         $user->handphone = $request->handphone;
+        $user->nip = $request->nip;
         if ($user->save()) {
             return response()->json(['message' => 'Data Profil berhasil dirubah.'], 200);
         }

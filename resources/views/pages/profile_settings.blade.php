@@ -166,6 +166,13 @@
                         </span>
                     </div>
                     <div class="form-group">
+                        <label for="nip">NIP<span class="text-warning">*</span></label>
+                        <input name="nip" type="text" id="nip" class="form-control" placeholder="NIP" autocomplete="off"
+                            required>
+                        <span id="nip-error" class="invalid-feedback" role="alert">
+                        </span>
+                    </div>
+                    <div class="form-group">
                         <label for="handphone">No. Handphone<span class="text-warning">*</span></label>
                         <input name="handphone" type="text" id="handphone" class="form-control"
                             placeholder="No. Handphone" autocomplete="off" required>

@@ -1,5 +1,5 @@
 <div class="content-header">
-   <div class="container-fluid d-none d-md-block">
+   <div class="container-fluid d-none d-lg-block">
       <div class="row">
          <div class="col-sm-6">
             <h1 class="m-0 text-dark">@yield('title', config('app.name'))</h1>

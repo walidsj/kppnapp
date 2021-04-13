@@ -77,8 +77,8 @@
                            <td>{{ $present->user['workunit']['name'] }}</td>
                            <td>
                               <i class="text-success fas fa-check-circle"></i> HADIR
-                              <br>
-                              <small><i>{{ $present->created_at }}</i></small>
+                              {{-- <br>
+                              <small><i>{{ $present->created_at }}</i></small> --}}
                            </td>
                         </tr>
                         @endforeach

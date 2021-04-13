@@ -6,7 +6,7 @@
       @yield('content')
    </div>
    <p class="mb-1 mt-4 text-center">
-      <small>Version 1.0 Rev 001 Build 20210315<br>
+      <small>Version 1.1 Rev 001 Build 20210413<br>
          <span class="font-weight-bold">{{ config('app.instance', 'Moh. Walid Arkham Sani') }} &copy;
             {{ date('Y', time()) }}
          </span>
