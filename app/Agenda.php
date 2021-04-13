@@ -15,6 +15,10 @@ class Agenda extends Model
         'title', 'description', 'user_id', 'start', 'end', 'link', 'attachment', 'status_agenda_id'
     ];
 
+    protected $appends = [
+        'url'
+    ];
+
     public function user()
     {
         return $this->belongsTo('App\User');
@@ -33,5 +37,10 @@ class Agenda extends Model
     public function scopeOrdered($query)
     {
         return $query->orderBy('start', 'asc')->get();
+    }
+
+    public function getUrlAttribute()
+    {
+        return route('agenda_detail', $this->slug);
     }
 }
