@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@push('stylesheets')
+<link rel="stylesheet" href="{{ asset('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+@endpush
+
 @section('body-class', 'hold-transition sidebar-mini layout-fixed layout-navbar-fixed')
 
 @section('app')
@@ -18,11 +22,7 @@
 </div>
 @endsection
 
-@section('stylesheets')
-<link rel="stylesheet" href="{{ asset('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
-@endsection
-
-@section('scripts')
+@push('scripts')
 <script src="{{ asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}">
 </script>
-@endsection
+@endpush

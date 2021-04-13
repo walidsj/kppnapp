@@ -156,7 +156,7 @@
 </div>
 @endsection
 
-@section('scripts')
+@push('scripts')
 <script type="text/javascript">
     $(function(){
         $('#workunit_id').select2({
@@ -212,4 +212,4 @@
         });
     });
 </script>
-@endsection
+@endpush

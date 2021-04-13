@@ -96,7 +96,7 @@
 </div>
 @endsection
 
-@section('scripts')
+@push('scripts')
 <script type="text/javascript">
    function sendPresent(agenda_id) {
             Swal.fire({
@@ -131,4 +131,4 @@
             });
         }
 </script>
-@endsection
+@endpush

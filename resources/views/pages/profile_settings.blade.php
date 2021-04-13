@@ -191,7 +191,7 @@
 </div>
 @endsection
 
-@section('scripts')
+@push('scripts')
 <script type="text/javascript">
     $('#updateProfileModalButton').click(function() {
             $('#updateProfile').trigger('reset');
@@ -247,4 +247,4 @@
           });
         });
 </script>
-@endsection
+@endpush

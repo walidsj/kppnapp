@@ -25,7 +25,7 @@
         rel="stylesheet">
 
     <!-- Styles -->
-    @yield('stylesheets')
+    @stack('stylesheets')
     <link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/select2/css/select2.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/select2/css/select2.css') }}">
@@ -48,7 +48,7 @@
             }
         });
     </script>
-    @yield('scripts')
+    @stack('scripts')
     <script type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script>
 </body>
 

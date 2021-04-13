@@ -2,6 +2,13 @@
 
 @section('title', 'Dasbor')
 
+@push('stylesheets')
+<link rel="stylesheet" href="{{ asset('assets/plugins/fullcalendar/main.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/fullcalendar-daygrid/main.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/fullcalendar-timegrid/main.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/plugins/fullcalendar-bootstrap/main.min.css') }}">
+@endpush
+
 @section('content')
 <div class="row">
     @if (session('status'))
@@ -75,14 +82,7 @@
 </div>
 @endsection
 
-@section('stylesheets')
-<link rel="stylesheet" href="{{ asset('assets/plugins/fullcalendar/main.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/plugins/fullcalendar-daygrid/main.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/plugins/fullcalendar-timegrid/main.min.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/plugins/fullcalendar-bootstrap/main.min.css') }}">
-@endsection
-
-@section('scripts')
+@push('scripts')
 <script src="{{ asset('assets/plugins/moment/moment.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/fullcalendar/main.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/fullcalendar/locales/id.js') }}"></script>
@@ -125,4 +125,4 @@
         calendar.render(); 
     }) 
 </script>
-@endsection
+@endpush
