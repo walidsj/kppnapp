@@ -132,7 +132,7 @@ class AgendaController extends Controller
         $agenda->start = $request->start;
         $agenda->end = $request->end;
         $agenda->link = $request->link;
-        $agenda->workunit_id = implode(',', $request->workunit_id);
+        $agenda->workunit_id = ($request->workunit_id) ? implode(',', $request->workunit_id) : null;
         $agenda->attachment = $request->attachment;
         $agenda->status_agenda_id = $request->status_agenda_id;
         if ($agenda->save()) {
@@ -161,7 +161,7 @@ class AgendaController extends Controller
         $agenda->start = $request->start;
         $agenda->end = $request->end;
         $agenda->link = $request->link;
-        $agenda->workunit_id = implode(',', $request->workunit_id);
+        $agenda->workunit_id = ($request->workunit_id) ? implode(',', $request->workunit_id) : null;
         $agenda->attachment = $request->attachment;
         $agenda->status_agenda_id = $request->status_agenda_id;
         if ($agenda->save()) {
