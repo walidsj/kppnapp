@@ -44,10 +44,10 @@
                <li class="list-group-item border-0">
                   <b>Partisipan Kegiatan</b>
                   <br>
-                  @if($workunits)
+                  @if($agenda->workunit)
                   Terbatas<br>
                   <ul>
-                     @foreach($workunits as $workunit)
+                     @foreach($agenda->workunit as $workunit)
                      <li>{{ $workunit->code }} - {{ $workunit->name }}</li>
                      @endforeach
                   </ul>

@@ -16,7 +16,7 @@ class Agenda extends Model
     ];
 
     protected $appends = [
-        'url'
+        'url', 'workunit'
     ];
 
     public function user()
@@ -29,11 +29,6 @@ class Agenda extends Model
         return $this->belongsTo('App\StatusAgenda');
     }
 
-    // public function present()
-    // {
-    //     return $this->hasMany('App\Present');
-    // }
-
     public function scopeOrdered($query)
     {
         return $query->orderBy('start', 'asc')->get();
@@ -42,5 +37,10 @@ class Agenda extends Model
     public function getUrlAttribute()
     {
         return route('agenda_detail', $this->slug);
+    }
+
+    public function getWorkunitAttribute()
+    {
+        return Workunit::whereIn('id', explode(',', $this->workunit_id))->get();
     }
 }

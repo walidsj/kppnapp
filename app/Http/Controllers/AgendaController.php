@@ -30,27 +30,16 @@ class AgendaController extends Controller
     public function detail($slug)
     {
         $agenda = Agenda::where('slug', $slug)->firstOrFail();
-        $workunits = [];
         $present = Present::where('agenda_id', $agenda->id)->where('user_id', Auth::user()->id)->first();
 
-        if ($agenda->workunit_id) {
-            $workunit_id = explode(',', $agenda->workunit_id);
-            $workunits = Workunit::whereIn('id', $workunit_id)->get();
-        }
-        return view('pages.agendas.agenda_detail', compact('agenda', 'workunits', 'present'));
+        return view('pages.agendas.agenda_detail', compact('agenda', 'present'));
     }
 
     public function present_index($slug)
     {
         $agenda = Agenda::where('slug', $slug)->firstOrFail();
-        $workunits = [];
         $presents = Present::with('user')->where('agenda_id', $agenda->id)->orderBy('created_at', 'asc')->get();
 
-        if ($agenda->workunit_id) {
-            $workunit_id = explode(',', $agenda->workunit_id);
-            $workunits = Workunit::whereIn('id', $workunit_id)->get();
-        }
-        // dd($presents);
         return view('pages.agendas.present_list', compact('agenda', 'workunits', 'presents'));
     }
 
@@ -122,6 +111,7 @@ class AgendaController extends Controller
 
     public function moderator_agenda_store(Request $request)
     {
+
         $this->validate($request, [
             'title' => 'required|min:3|max:255',
             'description' => 'required|min:3|max:255',
@@ -140,7 +130,7 @@ class AgendaController extends Controller
         $agenda->start = $request->start;
         $agenda->end = $request->end;
         $agenda->link = $request->link;
-        // $agenda->workunit_id = implode(',', $request->workunit_id[]);
+        $agenda->workunit_id = implode(',', $request->workunit_id);
         $agenda->attachment = $request->attachment;
         $agenda->status_agenda_id = $request->status_agenda_id;
         if ($agenda->save()) {
@@ -169,7 +159,7 @@ class AgendaController extends Controller
         $agenda->start = $request->start;
         $agenda->end = $request->end;
         $agenda->link = $request->link;
-        // $agenda->workunit_id = implode(',', $request->workunit_id[]);
+        $agenda->workunit_id = implode(',', $request->workunit_id);
         $agenda->attachment = $request->attachment;
         $agenda->status_agenda_id = $request->status_agenda_id;
         if ($agenda->save()) {

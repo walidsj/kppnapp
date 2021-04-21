@@ -73,19 +73,17 @@
                     </div>
                     <div class="form-group">
                         <label for="start">Tgl. Mulai<span class="text-warning">*</span></label>
-                        {{-- <input name="start" type="text" id="start" class="form-control" placeholder="Tgl. Mulai"
-                     autocomplete="off" required> --}}
                         <input name="start" type="text" class="form-control datetimepicker-input" id="start"
-                            data-toggle="datetimepicker" data-target="#start" placeholder="Tgl. Mulai" />
+                            data-toggle="datetimepicker" data-target="#start" placeholder="Tgl. Mulai"
+                            autocomplete="off" required />
                         <span id="start-error" class="invalid-feedback" role="alert">
                         </span>
                     </div>
                     <div class="form-group">
                         <label for="end">Tgl. Selesai<span class="text-warning">*</span></label>
-                        {{-- <input name="end" type="text" id="end" class="form-control" placeholder="Tgl. Selesai"
-                     autocomplete="off" required> --}}
                         <input name="end" type="text" class="form-control datetimepicker-input" id="end"
-                            data-toggle="datetimepicker" data-target="#end" placeholder="Tgl. Selesai" />
+                            data-toggle="datetimepicker" data-target="#end" placeholder="Tgl. Selesai"
+                            autocomplete="off" required />
                         <span id="end-error" class="invalid-feedback" role="alert">
                         </span>
                     </div>
@@ -96,13 +94,13 @@
                         <span id="link-error" class="invalid-feedback" role="alert">
                         </span>
                     </div>
-                    {{-- <div class="form-group">
-                  <label for="workunit_id">Satker</label>
-                  <select id="workunit_id" name="workunit_id[]" class="select2 form-control" multiple="multiple"
-                     style="width: 100%;"></select>
-                  <span id="workunit_id-error" class="invalid-feedback" role="alert">
-                  </span>
-               </div> --}}
+                    <div class="form-group">
+                        <label for="workunit_id">Satker</label>
+                        <select id="workunit_id" name="workunit_id[]" class="select2 form-control" multiple="multiple"
+                            style="width: 100%;"></select>
+                        <span id="workunit_id-error" class="invalid-feedback" role="alert">
+                        </span>
+                    </div>
                     <div class="form-group">
                         <label for="attachment">Lampiran</label>
                         <textarea name="attachment" type="text" id="attachment" class="form-control"
@@ -181,7 +179,10 @@
                 Object.keys(res).forEach(key => {
                     $('#storeModeratorAgenda').find(`input[name='${key}']`).val(res[key]);
                     if($('#storeModeratorAgenda').find(`textarea[name='${key}']`)) {
-                       $('#storeModeratorAgenda').find(`textarea[name='${key}']`).text(res[key]);
+                        $('#storeModeratorAgenda').find(`textarea[name='${key}']`).text(res[key]);
+                    }
+                    if($('#storeModeratorAgenda').find(`#${key}`)) {
+                        $('#storeModeratorAgenda').find(`#${key}`).val(res[key]);
                     }
                 });
                 $('#storeModeratorAgendaModal').modal('toggle');
@@ -197,6 +198,7 @@
         $('#storeModeratorAgenda').attr('method', 'POST');
         $('#storeModeratorAgenda').attr('action', '{{ route('moderator.agenda.store') }}');
         $('#storeModeratorAgenda').trigger('reset');
+        $('#storeModeratorAgenda').find('textarea').val(null);
         $('#storeModeratorAgenda').find('.select2').val(null).trigger('change');
     });
 </script>
