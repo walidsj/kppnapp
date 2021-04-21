@@ -30,17 +30,13 @@
                </li>
                <li class="list-group-item border-0">
                   <b>Partisipan Kegiatan</b>
-                  <br>
-                  @if($workunits)
-                  Terbatas<br>
                   <ul>
-                     @foreach($workunits as $workunit)
+                     @forelse($agenda->workunit as $workunit)
                      <li>{{ $workunit->code }} - {{ $workunit->name }}</li>
-                     @endforeach
+                     @empty
+                     <li>Semua Satuan Kerja</li>
+                     @endforelse
                   </ul>
-                  @else
-                  Semua Satuan Kerja
-                  @endif
                </li>
             </ul>
          </div>

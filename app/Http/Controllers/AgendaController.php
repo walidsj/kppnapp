@@ -32,6 +32,8 @@ class AgendaController extends Controller
         $agenda = Agenda::where('slug', $slug)->firstOrFail();
         $present = Present::where('agenda_id', $agenda->id)->where('user_id', Auth::user()->id)->first();
 
+        // return response()->json($agenda);
+
         return view('pages.agendas.agenda_detail', compact('agenda', 'present'));
     }
 
@@ -40,7 +42,7 @@ class AgendaController extends Controller
         $agenda = Agenda::where('slug', $slug)->firstOrFail();
         $presents = Present::with('user')->where('agenda_id', $agenda->id)->orderBy('created_at', 'asc')->get();
 
-        return view('pages.agendas.present_list', compact('agenda', 'workunits', 'presents'));
+        return view('pages.agendas.present_list', compact('agenda', 'presents'));
     }
 
     public function present_store(Request $request)
