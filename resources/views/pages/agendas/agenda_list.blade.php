@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="row">
-   <div class="col-lg-8">
+   <div class="col">
       @forelse($agenda_list as $monthly => $agendas)
       <div class="card shadow-sm mb-3">
          <div class="card-header">

@@ -30,10 +30,10 @@
                             <tr>
                                 <th style="width: 1%">#</th>
                                 <th>Kegiatan</th>
-                                <th>Deskripsi</th>
-                                <th>Tgl. Mulai</th>
-                                <th>Tgl. Selesai</th>
+                                <th>Tanggal Mulai</th>
+                                <th>Tanggal Selesai</th>
                                 <th>Sifat</th>
+                                <th>Satuan Kerja</th>
                                 <th>Tautan</th>
                                 <th>Lampiran</th>
                                 <th>PIC Mod.</th>
@@ -96,6 +96,7 @@
                     </div>
                     <div class="form-group">
                         <label for="workunit_id">Satker</label>
+                        <small class="text-warning">Kosongkan jika untuk semua satker.</small>
                         <select id="workunit_id" name="workunit_id[]" class="select2 form-control" multiple="multiple"
                             style="width: 100%;"></select>
                         <span id="workunit_id-error" class="invalid-feedback" role="alert">
@@ -389,11 +390,40 @@
                     },
                     orderable: false
                 },
-                { data: 'title' },
-                { data: 'description' },
+                { data:
+                    {
+                        title: 'title',
+                        description: 'description'
+                    },
+                    render: function ( data, type, row ) { // Tampilkan kolom aksi
+                        var html = `<div class="font-weight-bold d-block">${data.title}</div>
+                        <span>${data.description}</span>`;
+                        return html;
+                    },
+                    orderable: false
+                 },
                 { data: 'start' },
                 { data: 'end' },
-                { data: 'status_agenda.name' },
+                { data: 'status_agenda.name',
+                    orderable: false
+                },
+                {   data: 'workunit',
+                    render: function ( data, type, row ) { 
+                        var html = '';
+
+                        data.forEach(myFunction);
+                        function myFunction(item, index) {
+                            html += `<b>${item.code}</b> ${item.name} `;
+                        }
+
+                        if(html) {
+                            return html;
+                        } else {
+                            return '<b>Semua Satker</b>';
+                        }
+                    },
+                  orderable: false
+                },
                 { data: 'link' },
                 { data: 'attachment' },
                 { data: 'user.name' },
