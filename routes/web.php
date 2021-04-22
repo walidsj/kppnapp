@@ -38,6 +38,7 @@ Route::middleware(['auth', 'verified'])->group(
 
         Route::get('/notification', 'NotificationController@index')->name('notification');
         Route::get('/notification/{slug}', 'NotificationController@detail')->name('notification.detail');
+        Route::get('/notification/unread/{id}', 'NotificationController@unread')->name('notification.unread');
 
 
         Route::get('/profile-settings', 'HomeController@profile_settings_index')->name('profile_settings');

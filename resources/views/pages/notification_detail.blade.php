@@ -24,6 +24,9 @@
             <a href="{{ route('notification') }}" class="btn btn-sm btn-primary mt-3">
                <i class="fas fa-reply"></i> Kembali
             </a>
+            <a href="{{ route('notification.unread', [ $notification->id ]) }}" class="btn btn-sm btn-danger mt-3">
+               <i class="fas fa-eye-slash"></i> Unread
+            </a>
          </div>
       </div>
    </div>
