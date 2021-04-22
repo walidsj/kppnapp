@@ -40,7 +40,8 @@
       </li>
       <li class="nav-item dropdown">
          <a class="nav-link" data-toggle="dropdown" href="#">
-            <img height="20" src="{{ asset('assets/img/user.jpg') }}" class="img img-circle " alt="">
+            {{-- <img height="20" src="{{ asset('assets/img/user.jpg') }}" class="img img-circle " alt=""> --}}
+             <i class="fas fa-user-circle"></i>
          </a>
          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right shadow">
             <a class="dropdown-item text-truncate">
