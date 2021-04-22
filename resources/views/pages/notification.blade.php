@@ -33,9 +33,9 @@
                         {{ $notif->description }}
                      </span>
                      <a href="{{ route('notification.detail', ['slug' => $notif->slug]) }}"><span
-                           class="badge badge-info"><i class="far fa-eye"></i> Baca</span></a>
+                           class="badge badge-success"><i class="far fa-eye"></i> Baca</span></a>
                      @if($notif->user_id)
-                     <span class="float-right text-success text-md font-weight-bold opacity-3">
+                     <span class="float-right text-secondary text-md font-weight-bold opacity-3">
                         <i class="fas fa-check-circle"></i>
                         Dibaca
                      </span>
