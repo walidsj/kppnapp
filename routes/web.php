@@ -35,6 +35,11 @@ Route::middleware(['auth', 'verified'])->group(
 
         Route::get('/contact-us', 'InfoController@user_contact_index')->name('contact');
 
+
+        Route::get('/notification', 'NotificationController@index')->name('notification');
+        Route::get('/notification/{slug}', 'NotificationController@detail')->name('notification.detail');
+
+
         Route::get('/profile-settings', 'HomeController@profile_settings_index')->name('profile_settings');
         Route::post('/profile-settings/password-update', 'HomeController@profile_settings_password_update')->name('profile_settings.password.update');
         Route::put('/profile-settings/update', 'HomeController@profile_settings_update')->name('profile_settings.update');

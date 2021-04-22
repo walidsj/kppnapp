@@ -3406,7 +3406,7 @@ fieldset:disabled a.btn {
 	padding: 0.25rem 0.5rem;
 	font-size: 0.875rem;
 	line-height: 1.5;
-	border-radius: 0.2rem;
+	/* border-radius: 0.2rem; */
 }
 
 .btn-block {
@@ -10791,7 +10791,7 @@ body,
 .layout-navbar-fixed.sidebar-mini.sidebar-collapse .wrapper .brand-link,
 .layout-navbar-fixed.sidebar-mini-md.sidebar-collapse .wrapper .brand-link {
 	height: calc(3.5rem + 1px);
-	/* width: 4.6rem; */
+	width: 50vw;
 }
 
 .layout-navbar-fixed.sidebar-mini.sidebar-collapse .wrapper .brand-link.text-sm,

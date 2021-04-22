@@ -9,6 +9,37 @@
    <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="far fa-bell"></i>
+            @php
+            $num = \App\Notification::leftJoin('read_notifications', function($join) {
+            $join->on('notifications.id', '=', 'read_notifications.notification_id')
+            ->where('read_notifications.user_id', Auth::user()->id);
+            })->whereNull('read_notifications.user_id');
+            @endphp
+
+            @if($num->count())
+            <span class="badge badge-warning navbar-badge">{{ $num->count() }}</span>
+            @endif
+         </a>
+         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            @php
+            $unread_notif = $num->get();
+            @endphp
+
+            @foreach($unread_notif as $notif)
+            <a href="{{ route('notification.detail', [$notif->slug]) }}" class="dropdown-item">
+               <div class="text-truncate">
+                  <i class="fas fa-envelope mr-2"></i> {{ $notif->title }}
+                  <span
+                     class="float-right text-muted text-sm">{{ \Carbon\Carbon::parse($notif->created_at)->isoFormat('D MMMM YYYY') }}</span>
+               </div>
+            </a>
+            @endforeach
+            <a href="{{ route('notification') }}" class="dropdown-item dropdown-footer">Lihat Semua</a>
+         </div>
+      </li>
+      <li class="nav-item dropdown">
+         <a class="nav-link" data-toggle="dropdown" href="#">
             <img height="20" src="{{ asset('assets/img/user.jpg') }}" class="img img-circle " alt="">
          </a>
          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right shadow">
