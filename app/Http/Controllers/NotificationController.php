@@ -14,7 +14,8 @@ class NotificationController extends Controller
     {
         $notifications = Notification::leftJoin('read_notifications', function ($join) {
             $join->on('notifications.id', '=', 'read_notifications.notification_id')
-                ->where('read_notifications.user_id', '=', Auth::user()->id);
+                ->where('read_notifications.user_id', '=', Auth::user()->id)
+                ->whereNull('read_notifications.deleted_at');
         })->orderBy('notifications.created_at', 'desc')->get()->groupBy(function ($date) {
             return Carbon::parse($date->created_at)->isoFormat('MMMM YYYY');
         });
@@ -25,9 +26,11 @@ class NotificationController extends Controller
     public function detail($slug)
     {
         $notification = Notification::where('slug', $slug)->firstOrFail();
-        $read_status = ReadNotification::where('notification_id', $notification->id)->where('user_id', Auth::user()->id)->first();
+        $read_status = ReadNotification::withTrashed()->where('notification_id', $notification->id)->where('user_id', Auth::user()->id)->first();
 
-        if (empty($read_status)) {
+        if ($read_status) {
+            $read_status->restore();
+        } else {
             $read = new ReadNotification();
             $read->notification_id = $notification->id;
             $read->user_id = Auth::user()->id;
@@ -40,7 +43,8 @@ class NotificationController extends Controller
     public function unread($id)
     {
         $read_status = ReadNotification::where('notification_id', intval($id))->where('user_id', Auth::user()->id)->firstOrFail();
-        $read_status->forceDelete();
+        $read_status->delete();
+
         return redirect()->route('notification');
     }
 }

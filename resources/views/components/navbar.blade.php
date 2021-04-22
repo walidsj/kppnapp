@@ -14,7 +14,7 @@
             $num = \App\Notification::leftJoin('read_notifications', function($join) {
             $join->on('notifications.id', '=', 'read_notifications.notification_id')
             ->where('read_notifications.user_id', Auth::user()->id);
-            })->whereNull('read_notifications.user_id');
+            })->whereNotNull('read_notifications.deleted_at')->orWhereNull('read_notifications.user_id');
             @endphp
 
             @if($num->count())
