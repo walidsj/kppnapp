@@ -5,8 +5,6 @@
 @push('stylesheets')
 <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-<link rel="stylesheet"
-    href="{{ asset('assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
 @endpush
 
 @section('content')
@@ -442,98 +440,6 @@
                 { responsivePriority: 1, targets: 1 }
             ]
         })
-    });
-</script>
-<script type="text/javascript">
-    $(function(){
-      $('#start').datetimepicker({
-         format: 'YYYY-MM-DD HH:mm:ss',
-         buttons: {
-            showToday: true,
-            showClear: true,
-            showClose: true
-         },
-         icons: { 
-            time: 'fas fa-clock',
-            date: 'fas fa-calendar',
-            up: 'fas fa-arrow-up',
-            down: 'fas fa-arrow-down',
-            previous: 'fas fa-arrow-circle-left',
-            next: 'fas fa-arrow-circle-right',
-            today: 'fas fa-calendar-check-o',
-            clear: 'fas fa-trash',
-            close: 'fas fa-times' 
-         }
-      });
-      $('#end').datetimepicker({
-         format: 'YYYY-MM-DD HH:mm:ss',
-         buttons: {
-            showToday: true,
-            showClear: true,
-            showClose: true
-         },
-         icons: { 
-            time: 'fas fa-clock',
-            date: 'fas fa-calendar',
-            up: 'fas fa-arrow-up',
-            down: 'fas fa-arrow-down',
-            previous: 'fas fa-arrow-circle-left',
-            next: 'fas fa-arrow-circle-right',
-            today: 'fas fa-calendar-check-o',
-            clear: 'fas fa-trash',
-            close: 'fas fa-times' 
-         }
-      });
-      $('#status_agenda_id').select2({
-            placeholder: 'Pilih Sifat Kegiatan...',
-            allowClear: true,
-            ajax: {
-                url: '{{ route('api_status_agendas') }}',
-                dataType: 'json',
-                delay: 250,
-                data: function(params) {
-                    return {
-                        search: params.term
-                    }
-                },
-                processResults: function (data) {
-                    return {
-                        results: $.map(data, function (item) {
-                            return {
-                                text: item.name,
-                                id: item.id
-                            }
-                        })
-                    };
-                },
-                cache: true
-            }
-        });
-        $('#workunit_id').select2({
-            placeholder: 'Pilih Satuan Kerja...',
-            allowClear: true,
-            ajax: {
-                url: '{{ route('api_workunits') }}',
-                dataType: 'json',
-                delay: 250,
-                data: function(params) {
-                    return {
-                        search: params.term
-                    }
-                },
-                processResults: function (data) {
-                    return {
-                        results: $.map(data, function (item) {
-                            return {
-                                text: item.code+ ' - ' +item.name,
-                                id: item.id
-                            }
-                        })
-                    };
-                },
-                cache: true
-            }
-        });
     });
 </script>
 @endpush

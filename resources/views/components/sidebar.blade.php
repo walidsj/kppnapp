@@ -24,12 +24,12 @@
                   <p>Kegiatan Selesai</p>
                </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                <a href="{{ route('home') }}" class="nav-link">
-                  <i class="nav-icon fas fa-list"></i>
-                  <p>Grup Forum & FAQ</p>
-               </a>
-            </li>
+            <i class="nav-icon fas fa-list"></i>
+            <p>Grup Forum & FAQ</p>
+            </a>
+            </li> --}}
             <li class="nav-item">
                <a href="{{ route('contact') }}" class="nav-link @if(request()->routeIs('contact')) active @endif">
                   <i class="nav-icon fas fa-phone"></i>
@@ -43,6 +43,13 @@
                   class="nav-link @if(request()->routeIs('moderator.agenda')) active @endif">
                   <i class="nav-icon fas fa-briefcase"></i>
                   <p>Administrasi Kegiatan</p>
+               </a>
+            </li>
+            <li class="nav-item">
+               <a href="{{ route('moderator.notification') }}"
+                  class="nav-link @if(request()->routeIs('moderator.notification')) active @endif">
+                  <i class="nav-icon fas fa-bell"></i>
+                  <p>Notifikasi</p>
                </a>
             </li>
             <li class="nav-item">

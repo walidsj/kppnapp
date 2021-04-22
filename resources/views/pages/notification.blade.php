@@ -49,7 +49,7 @@
       @empty
       <div class="card shadow-sm mb-3">
          <div class="card-body text-muted">
-            Belum ada kegiatan.
+            Belum ada notifikasi.
          </div>
       </div>
       @endforelse

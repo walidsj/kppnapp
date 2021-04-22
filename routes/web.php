@@ -78,6 +78,19 @@ Route::middleware(['auth', 'verified'])->group(
 
                 Route::post('/moderator/agenda/data', 'AgendaController@moderator_agenda_datatable')->name('moderator.agenda.data');
                 Route::post('/moderator/agenda/data/trash', 'AgendaController@moderator_agenda_datatable_trash')->name('moderator.agenda.data_trash');
+
+
+                Route::get('/moderator/notification', 'NotificationController@moderator_notification_index')->name('moderator.notification');
+                Route::get('/moderator/notification/get', 'NotificationController@moderator_notification_get')->name('moderator.notification.get');
+                Route::post('/moderator/notification/store', 'NotificationController@moderator_notification_store')->name('moderator.notification.store');
+                Route::put('/moderator/notification', 'NotificationController@moderator_notification_update')->name('moderator.notification.update');
+                Route::delete('/moderator/notification/delete', 'NotificationController@moderator_notification_destroy')->name('moderator.notification.delete');
+
+                Route::delete('/moderator/notification/destroy', 'NotificationController@moderator_notification_destroy_permanent')->name('moderator.notification.destroy');
+                Route::put('/moderator/notification/restore', 'NotificationController@moderator_notification_restore')->name('moderator.notification.restore');
+
+                Route::post('/moderator/notification/data', 'NotificationController@moderator_notification_datatable')->name('moderator.notification.data');
+                Route::post('/moderator/notification/data/trash', 'NotificationController@moderator_notification_datatable_trash')->name('moderator.notification.data_trash');
             }
         );
         # END ROUTE MODERATOR -----------------------------------------------
