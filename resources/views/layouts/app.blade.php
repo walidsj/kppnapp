@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/select2/css/select2.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/select2/css/select2.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/adminlte.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/adminlte.css?v=2.0.0') }}">
 </head>
 
 <body class="@yield('body-class', '')">
