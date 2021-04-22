@@ -39,10 +39,8 @@ class NotificationController extends Controller
 
     public function unread($id)
     {
-        $read_status = ReadNotification::where('notification_id', intval($id))->firstOrFail();
-        if ($read_status && $read_status->user_id == Auth::user()->id) {
-            $read_status->forceDelete();
-        }
+        $read_status = ReadNotification::where('notification_id', intval($id))->where('user_id', Auth::user()->id)->firstOrFail();
+        $read_status->forceDelete();
         return redirect()->route('notification');
     }
 }
