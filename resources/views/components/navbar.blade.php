@@ -14,7 +14,10 @@
             $num = \App\Notification::leftJoin('read_notifications', function($join) {
             $join->on('notifications.id', '=', 'read_notifications.notification_id')
             ->where('read_notifications.user_id', Auth::user()->id);
-            })->whereNotNull('read_notifications.deleted_at')->orWhereNull('read_notifications.user_id');
+            })->whereNotNull('read_notifications.deleted_at')->orWhereNull('read_notifications.user_id')->select('*',
+            'notifications.created_at
+            AS date')->orderBy('notifications.created_at',
+            'desc');
             @endphp
 
             @if($num->count())
@@ -31,7 +34,7 @@
                <div class="text-truncate">
                   <i class="fas fa-envelope mr-2"></i> {{ $notif->title }}
                   <span
-                     class="float-right text-muted text-sm">{{ \Carbon\Carbon::parse($notif->created_at)->isoFormat('D MMMM YYYY') }}</span>
+                     class="float-right text-muted text-sm">{{ \Carbon\Carbon::parse($notif->date)->isoFormat('DD MMMM YYYY') }}</span>
                </div>
             </a>
             @endforeach
@@ -41,7 +44,7 @@
       <li class="nav-item dropdown">
          <a class="nav-link" data-toggle="dropdown" href="#">
             {{-- <img height="20" src="{{ asset('assets/img/user.jpg') }}" class="img img-circle " alt=""> --}}
-             <i class="fas fa-user-circle"></i>
+            <i class="fas fa-user-circle"></i>
          </a>
          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right shadow">
             <a class="dropdown-item text-truncate">

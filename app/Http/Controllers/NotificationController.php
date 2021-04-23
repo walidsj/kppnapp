@@ -18,7 +18,7 @@ class NotificationController extends Controller
             $join->on('notifications.id', '=', 'read_notifications.notification_id')
                 ->where('read_notifications.user_id', '=', Auth::user()->id)
                 ->whereNull('read_notifications.deleted_at');
-        })->orderBy('notifications.created_at', 'desc')->get()->groupBy(function ($date) {
+        })->select('*', 'notifications.created_at AS date')->orderBy('notifications.created_at', 'desc')->get()->groupBy(function ($date) {
             return Carbon::parse($date->created_at)->isoFormat('MMMM YYYY');
         });
 
@@ -55,7 +55,7 @@ class NotificationController extends Controller
     //// MODERATOR ////
     public function moderator_notification_index()
     {
-        return view('pages.moderator.notification');
+        return view('pages.moderator.notification_list');
     }
 
     public function moderator_notification_get(Request $request)

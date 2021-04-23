@@ -26,7 +26,7 @@
                   <div class="product-info">
                      <a class="text-dark product-title">{{ $notif->title }}
                         <span
-                           class="float-right text-muted text-sm">{{ \Carbon\Carbon::parse($notif->created_at)->isoFormat('D MMMM YYYY') }}</span>
+                           class="float-right text-muted text-sm">{{ \Carbon\Carbon::parse($notif->date)->isoFormat('D MMMM YYYY') }}</span>
                      </a>
                      <span class="product-description">
                         {{ $notif->description }}
