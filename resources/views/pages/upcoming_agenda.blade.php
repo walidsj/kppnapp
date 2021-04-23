@@ -38,7 +38,7 @@
                         {{ \Carbon\Carbon::parse($agenda->start)->isoFormat('HH.mm') }} WIB
                      </span>
                      @if($agenda->workunit_id)
-                     <span class="product-description text-info">
+                     <span class="product-description text-primary">
                         <i class="fas fa-user"></i>
                         Terbatas
                      </span>

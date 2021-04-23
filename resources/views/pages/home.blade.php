@@ -55,7 +55,7 @@
                                 {{ \Carbon\Carbon::parse($agenda->start)->isoFormat('HH.mm') }} WIB
                             </span>
                             @if($agenda->workunit_id)
-                            <span class="product-description text-info">
+                            <span class="product-description text-primary">
                                 <i class="fas fa-users"></i>
                                 Terbatas
                             </span>
@@ -67,7 +67,7 @@
                             </span>
                             @endif
                             <a href="{{ route('agenda_detail', ['slug' => $agenda->slug]) }}"><span
-                                    class="badge badge-info"><i class="far fa-eye"></i> Detail</span></a>
+                                    class="badge badge-primary"><i class="far fa-eye"></i> Detail</span></a>
                         </div>
                     </li>
                     @empty
