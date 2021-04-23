@@ -53,52 +53,44 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>No.</th>
                                         <th>Nama</th>
                                         <th>Program Studi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th colspan="3">Developer</th>
+                                        <th colspan="2">Developer</th>
                                     </tr>
                                     <tr>
-                                        <td>1.</td>
                                         <td>Moh. Walid Arkham Sani</td>
                                         <td>DIII PBB/Penilai</td>
                                     </tr>
                                     <tr>
-                                        <th colspan="3">Tim PKL KPPN Purwodadi 2021</th>
+                                        <th colspan="2">Tim PKL KPPN Purwodadi 2021</th>
                                     </tr>
                                     <tr>
-                                        <td>1.</td>
                                         <td>Diah Karunia Meilia Putri</td>
                                         <td>DIII
                                             Kebendaharaan
                                             Negara</td>
                                     </tr>
                                     <tr>
-                                        <td>2.</td>
                                         <td>Rizqi Febrian Aji</td>
                                         <td>DIII Akuntansi</td>
                                     </tr>
                                     <tr>
-                                        <td>3.</td>
                                         <td>Devita Candra Damayani</td>
                                         <td>DIII Akuntansi</td>
                                     </tr>
                                     <tr>
-                                        <td>4.</td>
                                         <td>Diah Suci Romdhonah</td>
                                         <td>DIII Akuntansi</td>
                                     </tr>
                                     <tr>
-                                        <td>5.</td>
                                         <td>Milhatul Izzah</td>
                                         <td>DIII Akuntansi</td>
                                     </tr>
                                     <tr>
-                                        <td>6.</td>
                                         <td>Shalsabilla Maulidsya
                                             Purnomo</td>
                                         <td>DIII
@@ -106,27 +98,23 @@
                                             Negara</td>
                                     </tr>
                                     <tr>
-                                        <td>7.</td>
                                         <td>Satrio Bayu Adjie
                                             Nugroho</td>
                                         <td>DIII Akuntansi</td>
                                     </tr>
                                     <tr>
-                                        <td>8.</td>
                                         <td>Arum Diah Puspitasari</td>
                                         <td>DIII
                                             Kebendaharaan
                                             Negara</td>
                                     </tr>
                                     <tr>
-                                        <td>9.</td>
                                         <td>Defria Fajri</td>
                                         <td>DIII
                                             Kebendaharaan
                                             Negara</td>
                                     </tr>
                                     <tr>
-                                        <td>10.</td>
                                         <td>Rafika Nur Sofiani</td>
                                         <td>DIII
                                             Kebendaharaan
@@ -137,8 +125,10 @@
                         </div>
                     </li>
                 </ul>
-                <a href="https://wa.me/6285157626557" class="btn btn-sm btn-primary mt-3">
-                    <i class="fab fa-whatsapp"></i> Kontak (Walid)
+                <a href="https://wa.me/6285157626557" class="btn btn-sm btn-primary">
+                    <i class="fab fa-whatsapp"></i> Walid
+                </a> <a href="https://wa.me/6281228159460" class="btn btn-sm btn-primary">
+                    <i class="fab fa-whatsapp"></i> Diah K.
                 </a>
             </div>
         </div>
