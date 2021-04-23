@@ -10,7 +10,6 @@
          <div class="card-header">
             <h3 class="card-title">{{ $monthly }}</h3>
             <div class="card-tools">
-               <small class="badge badge-primary">{{ count($notification) }}</small>
                <button type="button" class="btn btn-tool" data-card-widget="collapse">
                   <i class="fas fa-minus"></i>
                </button>
