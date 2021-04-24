@@ -7,9 +7,13 @@
     <div class="col">
         <div class="card shadow-sm mb-3">
             <div class="card-body">
-                <div class="form-group my-0">
+                <div class="form-group mt-0">
                     <label class="font-weight-bold">Ada Pertanyaan?</label>
-                    <textarea class="form-control" rows="2" placeholder="Tulis pertanyaan di sini..."></textarea>
+                    <input class="form-control" placeholder="Tulis judul pertanyaan..." />
+                </div>
+                <div class="form-group mb-0">
+                    <label class="font-weight-bold">Isi Pertanyaan</label>
+                    <textarea class="form-control" rows="2" placeholder="Tulis isi pertanyaan..."></textarea>
                 </div>
             </div>
             <div class="card-footer">
@@ -38,8 +42,7 @@
             <div class="card-body">
                 <div class="direct-chat-msg">
                     <div class="direct-chat-infos clearfix">
-                        <span class="direct-chat-name float-left">{{ $question->user->name }}
-                            - <span class="text-muted">{{ $question->user->workunit->name }}</span></span>
+                        <span class="direct-chat-name float-left">{{ $question->user->name }}</span>
                         <span
                             class="direct-chat-timestamp float-right">{{ \Carbon\Carbon::parse($question->created_at)->isoFormat('D MMMM YYYY') }}</span>
                     </div>
@@ -51,8 +54,7 @@
                 @foreach($question->answers as $answer)
                 <div class="direct-chat-msg right">
                     <div class="direct-chat-infos clearfix">
-                        <span class="direct-chat-name float-right">{{ $answer->user->name }} - <span
-                                class="text-muted">{{ $answer->user->workunit->name }}</span></span>
+                        <span class="direct-chat-name float-right">{{ $answer->user->name }}</span>
                         <span
                             class="direct-chat-timestamp float-left">{{ \Carbon\Carbon::parse($answer->created_at)->isoFormat('D MMMM YYYY') }}</span>
                     </div>
