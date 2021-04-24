@@ -18,7 +18,7 @@
                 </button>
             </div>
         </div>
-        <div class="mb-3">
+        <div class="mt-4 mb-3">
             <form class="form-inline" method="get">
                 <div class="input-group"> <input name="q" class="form-control" type="search"
                         placeholder="Cari topik pertanyaan..." aria-label="Search" value="">
