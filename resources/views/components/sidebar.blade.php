@@ -24,12 +24,12 @@
                   <p>Kegiatan Selesai</p>
                </a>
             </li>
-            {{-- <li class="nav-item">
-               <a href="{{ route('home') }}" class="nav-link">
-            <i class="nav-icon fas fa-list"></i>
-            <p>Grup Forum & FAQ</p>
-            </a>
-            </li> --}}
+            <li class="nav-item">
+               <a href="{{ route('forum') }}" class="nav-link @if(request()->routeIs('forum')) active @endif">
+                  <i class="nav-icon fas fa-list"></i>
+                  <p>Pertanyaan</p>
+               </a>
+            </li>
             <li class="nav-item">
                <a href="{{ route('contact') }}" class="nav-link @if(request()->routeIs('contact')) active @endif">
                   <i class="nav-icon fas fa-phone"></i>

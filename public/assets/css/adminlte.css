@@ -10791,7 +10791,8 @@ body,
 .layout-navbar-fixed.sidebar-mini.sidebar-collapse .wrapper .brand-link,
 .layout-navbar-fixed.sidebar-mini-md.sidebar-collapse .wrapper .brand-link {
 	height: calc(3.5rem + 1px);
-	width: 50vw;
+	/* width: 50vw; */
+	max-width: 50vw;
 }
 
 .layout-navbar-fixed.sidebar-mini.sidebar-collapse .wrapper .brand-link.text-sm,
