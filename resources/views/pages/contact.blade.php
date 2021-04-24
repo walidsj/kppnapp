@@ -13,9 +13,7 @@
                         <span class="direct-chat-name float-left">{{ $contact->name }}</span>
                         <span class="direct-chat-timestamp float-right">{{ $contact->position }}</span>
                     </div>
-                    {{-- <img class="direct-chat-img" src="{{ asset('assets/img/user.jpg') }}" alt="message user image">
-                    --}}
-                    <i class="fas direct-chat-img fa-3x fa-user-circle"></i>
+                    <img class="direct-chat-img" src="{{ asset('assets/img/user.jpg') }}" alt="message user image">
                     <a href="https://wa.me/62{{ ltrim($contact->handphone, '0') }}">
                         <div class="direct-chat-text font-weight-bold">
                             <span class="badge badge-success badge-pill"><i class="fab fa-whatsapp"></i></span>

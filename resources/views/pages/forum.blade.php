@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col">
+    <div class="col-md-4 order-md-2">
         <div class="card shadow-sm mb-3">
             <div class="card-body">
                 <div class="form-group mt-0">
@@ -22,7 +22,102 @@
                 </button>
             </div>
         </div>
-        <div class="mt-4 mb-3">
+        <div class="card shadow-sm mb-3">
+            <div class="card-header">
+                <h3 class="card-title">
+                    Kategori Topik
+                </h3>
+            </div>
+            <div class="card-body p-0">
+                <ul class="products-list product-list-in-card p-2">
+                    <li class="item mx-3">
+                        <div class="product-img">
+                            <img src="{{ asset('assets/img/folder.jpg') }}" alt="Pelatihan Pengadministrasian Siwanda"
+                                class="img-size-50 img-circle">
+                        </div>
+                        <div class="product-info">
+                            <a class="text-dark product-title">Layanan</a>
+                            <span class="product-description">
+                                Luana adalah moderator dalam kegiatan ini. Siapapun yang bertemu dengan Luana maka ia
+                                akan segera jatuh cinta.
+                            </span>
+                            <a href="http://127.0.0.1:1000/agenda/1618994558-pelatihan-pengadministrasian-siwanda"><span
+                                    class="badge badge-primary"><i class="far fa-eye"></i> Detail</span></a>
+                        </div>
+                    </li>
+                    <li class="item mx-3">
+                        <div class="product-img">
+                            <img src="{{ asset('assets/img/folder.jpg') }}" alt="Pelatihan Pengadministrasian Siwanda"
+                                class="img-size-50 img-circle">
+                        </div>
+                        <div class="product-info">
+                            <a class="text-dark product-title">Aplikasi dan Peraturan</a>
+                            <span class="product-description">
+                                Luana adalah moderator dalam kegiatan ini. Siapapun yang bertemu dengan Luana maka ia
+                                akan segera jatuh cinta.
+                            </span>
+                            <a href="http://127.0.0.1:1000/agenda/1618994558-pelatihan-pengadministrasian-siwanda"><span
+                                    class="badge badge-primary"><i class="far fa-eye"></i> Detail</span></a>
+                        </div>
+                    </li>
+                    <li class="item mx-3">
+                        <div class="product-img">
+                            <img src="{{ asset('assets/img/folder.jpg') }}" alt="Pelatihan Pengadministrasian Siwanda"
+                                class="img-size-50 img-circle">
+                        </div>
+                        <div class="product-info">
+                            <a class="text-dark product-title">Perbendaharaan</a>
+                            <span class="product-description">
+                                Luana adalah moderator dalam kegiatan ini. Siapapun yang bertemu dengan Luana maka ia
+                                akan segera jatuh cinta.
+                            </span>
+                            <a href="http://127.0.0.1:1000/agenda/1618994558-pelatihan-pengadministrasian-siwanda"><span
+                                    class="badge badge-primary"><i class="far fa-eye"></i> Detail</span></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card shadow-sm mb-3">
+            <div class="card-header">
+                <h3 class="card-title">
+                    Sering Ditanyakan
+                </h3>
+            </div>
+            <div class="card-body p-0">
+                <ul class="products-list product-list-in-card p-2">
+                    <li class="item mx-3">
+                        <div class="product-img">
+                            <img src="{{ asset('assets/img/question.jpg') }}" alt="Pelatihan Pengadministrasian Siwanda"
+                                class="img-size-50 img-circle">
+                        </div>
+                        <div class="product-info">
+                            <a class="text-dark product-title">Pelatihan Pengadministrasian Siwanda</a>
+                        </div>
+                        <div class="product-info">
+                            <a href="http://127.0.0.1:1000/agenda/1618994558-pelatihan-pengadministrasian-siwanda"><span
+                                    class="badge badge-primary"><i class="far fa-eye"></i> Detail</span></a>
+                        </div>
+                    </li>
+                    <li class="item mx-3">
+                        <div class="product-img">
+                            <img src="{{ asset('assets/img/question.jpg') }}" alt="Pelatihan Pengadministrasian Siwanda"
+                                class="img-size-50 img-circle">
+                        </div>
+                        <div class="product-info">
+                            <a class="text-dark product-title">Pelatihan Pengadministrasian Siwanda</a>
+                        </div>
+                        <div class="product-info">
+                            <a href="http://127.0.0.1:1000/agenda/1618994558-pelatihan-pengadministrasian-siwanda"><span
+                                    class="badge badge-primary"><i class="far fa-eye"></i> Detail</span></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 order-md-1">
+        <div class="my-3">
             <form class="form-inline" method="get">
                 <div class="input-group"> <input name="q" class="form-control" type="search"
                         placeholder="Cari topik pertanyaan..." aria-label="Search" value="">
@@ -46,7 +141,7 @@
                         <span
                             class="direct-chat-timestamp float-right">{{ \Carbon\Carbon::parse($question->created_at)->isoFormat('D MMMM YYYY') }}</span>
                     </div>
-                    <i class="fas direct-chat-img fa-3x fa-user-circle"></i>
+                    <img class="direct-chat-img" src="{{ asset('assets/img/user.jpg') }}" alt="message user image">
                     <div class="direct-chat-text">
                         {{ $question->content }}
                     </div>
@@ -58,7 +153,7 @@
                         <span
                             class="direct-chat-timestamp float-left">{{ \Carbon\Carbon::parse($answer->created_at)->isoFormat('D MMMM YYYY') }}</span>
                     </div>
-                    <i class="fas direct-chat-img fa-3x fa-user-circle"></i>
+                    <img class="direct-chat-img" src="{{ asset('assets/img/user.jpg') }}" alt="message user image">
                     <div class="direct-chat-text">
                         {{ $answer->content }}
                     </div>
