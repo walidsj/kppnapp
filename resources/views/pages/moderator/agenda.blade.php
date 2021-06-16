@@ -442,4 +442,76 @@
         })
     });
 </script>
+<script type="text/javascript">
+   $(function(){
+      $('#start').datetimepicker({
+         format: 'YYYY-MM-DD HH:mm:ss',
+         buttons: 
+         {
+            showToday: true,
+            showClear: true,
+            showClose: true
+         }
+      });
+      $('#end').datetimepicker({
+         format: 'YYYY-MM-DD HH:mm:ss',
+         buttons:
+         {
+            showToday: true,
+            showClear: true,
+            showClose: true
+         }
+      });
+      $('#status_agenda_id').select2({
+            placeholder: 'Pilih Sifat Kegiatan...',
+            allowClear: true,
+            ajax: {
+                url: '{{ route('api_status_agendas') }}',
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        search: params.term
+                    }
+                },
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                text: item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        });
+        $('#workunit_id').select2({
+            placeholder: 'Pilih Satuan Kerja...',
+            allowClear: true,
+            ajax: {
+                url: '{{ route('api_workunits') }}',
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        search: params.term
+                    }
+                },
+                processResults: function (data) {
+                    return {
+                        results: $.map(data, function (item) {
+                            return {
+                                text: item.code+ ' - ' +item.name,
+                                id: item.id
+                            }
+                        })
+                    };
+                },
+                cache: true
+            }
+        });
+    });
+</script>
 @endpush
